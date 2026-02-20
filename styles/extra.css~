@@ -1,0 +1,7 @@
+.boxed-word {
+  border: 1px solid #007bff; /* Color of box border */
+  padding: 0.15em 0.35em;     /* Space around text */
+  border-radius: 0.25em;      /* Rounded corners (optional) */
+  background-color: #f8f9fa;  /* Light background (optional) */
+  color: #212529;             /* Text color */
+}

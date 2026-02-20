@@ -1,0 +1,103 @@
+# Cloth
+
+Cloth is the material model for simulating curves. Cloth objects in Blender must be **triangulated mesh** objects.
+
+{% include "./solver-node.md" %}
+
+{% include "./rest-shape.md" %}
+
+{% include "./preload-reference-shape.md" %}
+
+{% include "./target-shape.md" %}
+
+{% include "./driven-shape.md" %}
+
+## Cloth Material Models
+
+Cloth objects can be one of two different type of materials, uv panel [Baraff et. al.](https://www.cs.cmu.edu/~baraff/papers/sig98.pdf) or elastic membrane [Macklin et. al.](https://mmacklin.com/neohookean.pdf)
+
+### UV panel
+
+UV panel material follows the tailor style workflow. User can create cloth 2D patches, and use constraints to stitch the cloth patches together. In such case, the cloth rest shape is defined in 2D using UV parameters stored in **hi_phy_cloth_uv** attribute.
+
+In Blender, we provided a <span class="boxed-word">Convert UV</span> button on the cloth object panel to convert the blender UV attribute to **hi_phy_cloth_uv** attribute. However, the **cloth uv** attribute is not 0 - 1 as the UV texture coordinate, but rather should be the physical coordinate of the cloth panel when lay flat on the UV plane. User can use addons such [Magic UV](https://extensions.blender.org/add-ons/magic-uv/) to create a UV coordinate that matches the UV scale of cloth panels.
+
+!!! note "Scaling the cloth panel"
+
+    Because the transformation of the 3D model can skew the surface of a mesh. We **do not** automatically adjust the **cloth uv** coordinate if the 3D model is scaled. To ensure the simulation works as intended, user need to manually adjust the **cloth uv** attribute to match the scaling of the cloth model.
+
+| Property Name                   | Description                                          |    Unit                    |  Is Mappable | Is Animatable |
+| ------------------------------- | ---------------------------------------------------- | -------------------------- | ------------ | ------------- |
+| Stretch Stiffness U             | How much the panel resists stretching along the U direction              |      $g/s^2$               |      YES     |      YES      |
+| Stretch Stiffness V             | How much the panel resists stretching along the V direction              |      $g/s^2$               |      YES     |      YES      |
+| Stretch Damping                 | Damping for the stretch motion                       |      $1/s$                 |      YES     |      YES      |
+| Sheer Stiffness                 | How much the panel resists sheering                  |      $g/s^2$               |      YES     |      YES      |
+| Sheer Damping                   | Damping for the sheering motion                      |      $1/s$                 |      YES     |      YES      |
+| Bend Stiffness U                | How much the panel resists bend along the U direction|      $g*cm/s^2$            |      YES     |      YES      |
+| Bend Stiffness V                | How much the panel resists bend along the V direction|      $g*cm/s^2$            |      YES     |      YES      |
+| Bend Damping                    | Damping for the bend motion                          |      $1/s$                 |      YES     |      YES      |
+
+### Elastic Membrane
+
+Elastic Membrane are material models that are rubber like. It can be used to simulate 2D surfaces that does not have a clear panel structure, such as gloves. UV parameters are not need for simulate elastic membranes
+
+| Property Name                   | Description                                          |    Unit                    |  Is Mappable | Is Animatable |
+| ------------------------------- | ---------------------------------------------------- | -------------------------- | ------------ | ------------- |
+| Mu $\mu$                        | The first Lamé  parameter, shear modulus, $\mu$. It roughly corresponding to resistance to the shearing motion   |      $g/s^2$               |      YES     |      YES      |
+| Lambda $\lambda$                | The second Lamé  parameter, shear modulus, $\mu$. It roughly corresponding to area preservation  |      $g/s^2$               |      YES     |      YES      |
+| Mu Damping                      | Damping for the shear motion                         |      $1/s$                 |      YES     |      YES      |
+| Lambda Damping                  | Damping for the area changing (stretch) motions      |      $1/s$                 |      YES     |      YES      |
+| Bend Stiffness V                | How much the panel resists bend along the V direction|      $g*cm/s^2$            |      YES     |      YES      |
+| Bend Damping                    | Damping for the bend motion                          |      $1/s$                 |      YES     |      YES      |
+
+## Other Properties
+
+| Property Name               | Description                                          |    Unit                    |  Is Mappable | Is Animatable |
+| --------------------------- | ---------------------------------------------------- | -------------------------- | ------------ | ------------- |
+| Target Stiffness            | The strength of the target shape pull                |  $10\mu N/cm = g/s^2$      |      YES     |       YES     |
+| Target Damping              | Damping factor for target shape pull to prevent oscillation. $1$ is critical damping |  Unitless |      YES      |       YES     |
+| Gravity                     | The gravitaional acceleration                        |  $cm/s^2$                  |      YES     |       YES     |
+| External Force              | Additional external force                            |  $10\mu N = g*cm/s^2$      |      YES     |       YES     |
+| Inner Thickness             | The thickness along the negative normal direction    |  Model                     |      YES     |       YES     |
+| Outer Thickness             | The thickness along the positive normal direction    |  Model                     |      YES     |       YES     |
+| Inner Friction Coefficient  | The friction coefficient for the inside              | Unitless                   |      YES     |       YES     |
+| Outer Friction Coefficient  | The friction coefficient for the outside             | Unitless                   |      YES     |       YES     |
+| Barrier Stiffness           | The stiffness of the collision barrier for contact   | $10\mu N = g*cm/s^2$       |      YES     |       YES     |
+| Density                     | Surface density of the cloth object                  |  $g/cm^2$                  |      YES     |       YES     |
+| Relative Motion Damping     | Damping factor for relative motion between two adjacent vertices. |  $1/s$         |      YES     |       YES     |
+
+# Example
+
+You can find the an example file for cloth simulation with UV panel materials [here](../demos/cloth-demo-uv.blend).
+
+<figure markdown="span" class="center-figure">
+  ![Cloth Demo UV](../images/material-models/cloth-demo-uv.png){ width="300" }
+</figure>
+
+You can find the an example file for cloth simulation with elastic membrane materials with resolution test [here](../demos/cloth-demo-elastic-resolution.blend).
+
+<figure markdown="span" class="center-figure">
+  ![Cloth Demo Elastic](../images/material-models/cloth-demo-elastic-resolution.png){ width="300" }
+</figure>
+
+!!! note "Biased Triangulation"
+
+    Because HiPhyEngine requires all meshes to be triangulated, the regularity of the triangulation will creates a preferred bending direction on the material. Increasing resolution of the mesh, and randomize the triangulation can mitigate such artifacts.
+
+You can find a more complex example of an animated hand taking off a glove [here](../demos/glove-demo.blend). This example shows how user can use soft collider for the hands and cloth object for the glove, and even though the animation contains self intersection, HiPhyEngine is able to resolve the collision and create an intersection free result for both hands and the glove.
+
+<figure markdown="span" class="center-figure">
+  ![Glove Demo](../images/material-models/glove-demo-1.png){ width="300" }
+</figure>
+
+<figure markdown="span" class="center-figure">
+  ![Glove Demo](../images/material-models/glove-demo-2.png){ width="300" }
+</figure>
+
+<figure markdown="span" class="center-figure">
+  ![Glove Demo](../images/material-models/glove-demo-3.png){ width="300" }
+</figure>
+
+<figure markdown="span" class="center-figure">
+  ![Glove Demo](../images/material-models/glove-demo-4.png){ width="300" }
+</figure>

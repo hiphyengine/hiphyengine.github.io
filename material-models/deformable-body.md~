@@ -1,0 +1,11 @@
+# Deformable Body
+
+Deformable body is the material model for simulating curves. Deformable body objects in Blender must be **closed triangulated** meshes. 
+
+{% include "./solver-node.md" %}
+
+{% include "./target-shape.md" %}
+
+{% include "./driven-shape.md" %}
+
+{% include "./mesh-bone.md" %}

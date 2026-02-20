@@ -1,0 +1,27 @@
+# HiPhyEngine Material Models
+
+HiPhyEngine supports full coupling of multiple different material models. Picking the right material model for the right phenomenal is crucial to get a stable simulation result that fits your expectation. For Lagrangian simulation, HiPhyEngine supports 6 different material models: Affine Body, Elastic Rod, Cloth, Deformable Body, Kinematic Collider, and Soft Collider.
+
+## Affine Body
+
+Affine Body in HiPhyEngine is an implementation of the work by [Lan et. al.](https://arxiv.org/abs/2201.10022). It is designed for simulating very stiff objects and holds many advantages over rigid bodies. For the purpose of the simulation setup, they can be treated as the material models for rigid objects.
+
+## Elastic Rod
+
+Elastic Rod in HiPhyEngine is an implementation of the work by [Bergou et. al.](https://www.cs.columbia.edu/cg/threads/). Different from a traditional spring-based system, a single elastic rod can resist twist and bend, which makes them ideal for simulation hair (especially curls) and other type of thin threads that have a innate curvy structure that needs to be maintained in simulation.
+
+## Cloth
+
+Cloth in HiPhyEngine is an implementation of the work by [Baraff et. al.](https://www.cs.cmu.edu/~baraff/papers/sig98.pdf) and [Macklin et. al.](https://mmacklin.com/neohookean.pdf). It can be used to simulate soft fabric materials.
+
+## Deformable Bodies
+
+Deformable Body in HiPhyEngine is an implementation of the work by [McAdams et. al.](https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf). It can be used for soft 3D objects like elastic balls, or muscle and body to create secondary motions.
+
+## Kinematic Collider
+
+Kinematic Colliders are standard collision objects. They are directly taken from the animation, the simulator will use them as collision objects for simulated materials, without simulate the kinematic colliders.
+
+## Soft Collider
+
+In the case of animation, it rarely creates intersection free input for simulations. Without modifications, those collision objects will leads to failed simulation as HiPhyEngine not only guarantees but requires (unless collision is turned off) to be intersection free. Soft colliders are designed to resolve self intersection in colliders from animation input. In contrast to cloth or deformable body, soft collider has carries no momentum, so there will be no jiggle secondary motion, only intersection resolution. 

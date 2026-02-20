@@ -1,0 +1,3 @@
+`Preload Reference Shape`
+
+:    During simulation, external force such as gravity will change the designed shape. The preloading process solves the **rest shape** needed to maintain the **preload reference shape** . See [preloading](#Preloading) for more detail.

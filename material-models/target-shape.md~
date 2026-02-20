@@ -1,0 +1,3 @@
+# Target Shape
+
+:    The **Target Shape** is the object for defining the shape at **rest**. The simulation object will returns to the **Rest Shape** when there is no external force. When no **Rest Shape** is specified, the start frame of the simulation object is used as the **Rest Shape**.

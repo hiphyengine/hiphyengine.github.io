@@ -1,0 +1,95 @@
+# HiPhyEngine Blender Quick Start
+
+### Install Addon
+
+HiPhyEngine can be installed through the add on menu(<span class="boxed-word">edit</span>-><span class="boxed-word">preferences</span>-><span class="boxed-word">Add-ons</span>)
+
+<figure markdown="span" class="center-figure">
+  ![Install Addon](../images/quick-start/install-addon.png){ width="300" }
+  <figcaption>Install Menu</figcaption>
+</figure>
+
+For the first time HiPhyEngine is loaded, it will automatically install its dependancy [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html) and [PyBind11](https://pybind11.readthedocs.io/en/stable/) using **pip**. Blender's python manages its own enviroment, and those packages will be only installed with Blender's python enviroment. Due to the installation, the first time HiPhyEngine is loaded, it can take a seconds to a few minutes to install its dependancies depending on the network connection.
+
+!!! note
+    HiPhyEngine is currently complying to the [VFX2025](https://vfxplatform.com/) standard. Specificly, Python 3.11. It is comes with Blender 4.5+, currently, HiPhyEngine is tested with Blender 5.0 
+
+### Creating Your First Simulation Setup
+
+In this section, we will show user how to set up a simple rigid body (affine body) simulation.
+
+After insallation, HiPhy panel should show in the physics menu in Blender.
+
+<figure markdown="span" class="center-figure">
+  ![HiPhy Panel](../images/quick-start/hiphy-panel.png){ width="150" }
+</figure>
+
+By checking <span class="boxed-word">Hi Phy</span>, it enables Hi Phy Engine on the selected obeject.
+
+<figure markdown="span" class="center-figure">
+  ![HiPhy Panel](../images/quick-start/hiphy-panel-expand.png){ width="150" }
+</figure>
+
+The panel lists the different supported materials for HiPhyEngine. For this tutorial, we will use the <span class="boxed-word">Lagrangian Solver</span>, <span class="boxed-word">Affine Body</span>, and <span class="boxed-word">Collider</span>.  
+
+#### Creating Affine Bodies
+
+Create two cubes and places them above each other for some interesting collision.
+
+Enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel and select <span class="boxed-word">Affine Body</span> as the material model.
+<figure markdown="span" class="center-figure">
+  ![Create Cubes](../images/quick-start/create-affine-bodies.png){ width="300" }
+</figure>
+
+!!! note
+    [Affine Bodies](https://arxiv.org/abs/2201.10022) are material models for simulating very stiff objects. From the simulator's perspective, they are preferred over rigid bodies for their mathematical properties. For the purpose of simulation setup, they can be treat as rigid bodies without differentiation.
+
+In the <span class="boxed-word">Modifiers</span> panel, add a <span class="boxed-word">Triangulate</span> modifier to both cubes. Check the <span class="boxed-word">Keep Normals</span> option to ensure the normals are preserved by the triangulation.
+
+<figure markdown="span" class="center-figure">
+  ![Triangulate](../images/quick-start/triangulate.png){ width="150" }
+</figure>
+
+!!! note
+    All meshes in HiPhyEngine simulation must be triangle meshes. To ensure maximum transparency, HiPhyEngine does not perform any internal triangulation, so the simulation mesh will always matches what is in the scene.
+
+#### Creating A Collider
+
+Create a plane and scale it up and move it down.
+Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word">Collider</span>. Don't forget to triangulate it as well.
+
+<figure markdown="span" class="center-figure">
+  ![Floor](../images/quick-start/floor.png){ width="300" }
+</figure>
+
+#### Creating A Solver
+
+A solver node is in charge of gathering the information of all the simulation objects connected to the solver, running the simulation and maintaining the cache for simulation.
+
+Create an empty plane axis (or any invisible object you prefer). Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word">Lagrangian Solver</span>.
+
+#### Connect Objects To the Solver
+
+The last thing you need to do, is to connect the simulation objects to the solver.
+
+In the <span class="boxed-word">Hi Phy</span> panel, assign the solver node to the <span class="boxed-word">Solver</span> property for the two affine bodies and the collider. Also change the <span class="boxed-word">Gravity</span> property on the affine bodies from [0, -980, 0] to [0, 0, -980].
+
+<figure markdown="span" class="center-figure">
+  ![Floor](../images/quick-start/simulation-setting.png){ width="150" }
+</figure>
+
+!!! note "z-up vs y-up"
+    HiPhyEngine is generally coordinate system agnostic, besides the <span class="boxed-word">Gravity</span> property. Even though Blender is default z-up, we choose to be y-up to be consistent with industry standard to make it easier working with assets from other packages.
+
+!!! note "Unit"
+    The unit of length in HiPhyEngine is **cm**. There is a <span class="boxed-word">Solver Scale</span> property in the solver node to convert units if the scene unit is not **cm**.
+
+#### Running The Simulation
+
+Click the <span class="boxed-word">Run Sim</span> button on the solver node's <span class="boxed-word">Hi Phy</span> panel, the simulation will be kicked off asynchronously. You can see the progress of the simulation under the <span class="boxed-word">Run Sim</span> button.
+
+You can change the frames, and the simulation results will automatically update the mesh when the frames are available.
+
+Congratulation on your first HiPhy simulation!
+
+You can find the reference file [here](../demos/quick-start.blend)

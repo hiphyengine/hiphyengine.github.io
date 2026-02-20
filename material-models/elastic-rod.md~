@@ -1,0 +1,117 @@
+# Elastic Rod
+
+Elastic rod is the material model for simulating curves. Elastic rod objects in Blender must be **curves** objects.
+
+{% include "./solver-node.md" %}
+
+{% include "./rest-shape.md" %}
+
+{% include "./target-shape.md" %}
+
+{% include "./driven-shape.md" %}
+
+## Material Properties
+
+| Property Name                   | Description                                          |    Unit                    |  Is Mappable | Is Animatable |
+| ------------------------------- | ---------------------------------------------------- | -------------------------- | ------------ | ------------- |
+| Target Stiffness                | The strength of the target shape pull                |  $10\mu N/cm = g/s^2$      |      YES     |       YES     |
+| Target Damping                  | Damping factor for target shape pull to prevent oscillation. $1$ is critical damping |  Unitless |      YES      |       YES     |
+| Gravity                         | The gravitational acceleration                       |  $cm/s^2$                  |      YES     |       YES     |
+| External Force                  | Additional external force                            |  $10\mu N = g*cm/s^2$      |      YES     |       YES     |
+| Preloading Percentage           | The amount (0 - 1) for preloading (see the preloading section for more detail)    |  Unitless    |      YES      |               |
+| Friction Coefficient            | The friction coefficient                             | Unitless                   |      YES     |       YES     |
+| Barrier Stiffness               | The stiffness of the collision barrier for contact   | $10\mu N = g*cm/s^2$       |      YES     |       YES     |
+| Self Spring Collision Stiffness | The stiffness of the rod-rod collision spring for contact (see the continuous collision section for more detail)   | $10\mu N = g*cm/s^2$      |      YES     |       YES     |
+| Self Spring Collision Damping   | Damping factor for rod-rod collision spring to prevent oscillation. $1$ is critical damping   | Unitless     |      YES     |       YES     |
+| Self Spring Collision Friction  | The friction coefficient for rod-rod collision spring| Unitless                    |      YES     |       YES     |
+| Collision Radius                | Radius of collision for the rod                      | Model Unit                  |      YES     |       YES     |
+| Density                         | Line density of the elastic rod                      |  $g/cm$                     |      YES     |       YES     |
+| Stretch Stiffness               | How much does the rod resists stretch                |  $10\mu N/cm = g/s^2$       |      YES     |       YES     |
+| Stretch Damping                 | Damping factor for stretch force. (1 is critical damping) |  Unitless              |      YES     |       YES     |
+| Bend Stiffness                  | How much does the rod resists bend                   |  $10\mu N/rad = g/s^2/rad$  |      YES     |       YES     |
+| Bend Damping                    | Damping factor for bend force.                       |  $10\mu N/g = cm/s^2$       |      YES     |       YES     |
+| Twist Stiffness                 | How much does the rod resists twist                  |  $10\mu N/rad = g/s^2/rad$  |      YES     |       YES     |
+| Twist Damping                   | Damping factor for twist force.                      |  $1/(cm^2s^2)$              |      YES     |       YES     |
+| Relative Motion Damping         | Damping factor for relative motion between two adjacent vertices. |  $1/s$         |      YES     |       YES     |
+| Mass Damping                    | Damping factor for all motions                       |  $1/s$                      |      YES     |       YES     |
+| Moment of Inertia Damping       | Damping of all twist motion                          |  $1/s$                      |      YES     |       YES     |
+
+!!! note "Model Unit"
+
+    Model units are special units that does not scale with the solver scale. See solver section for more detail.
+    
+!!! note "Density" 
+
+    Rod density is computed using per unit length, not the volume. Collision radius of the rod does not affect the rod mass.
+
+!!! note "Friction Coefficient"
+
+    Friction coefficients are multiplicative. If a surface  with friction coefficient $0.1$ comes in contact with another surface of friction coefficient $0.1$, the resulting friction coefficient is $0.1 \times 0.1 = 0.01$
+
+## Parameterization
+   
+HiPhyEngine supports expression languages such as [SeExpr2](https://github.com/wdas/SeExpr). In some cases, use might want to use the \$t expression to procedurally generate a map for a given attribute.
+
+The <span class="boxed-word">Add parameterization attribute to curve</span> button creates an attribute on the curve that can be used by the expression later.
+
+## Curves Order
+
+Similar to all meshes in HiPhyEngine are linear elements (triangles), Curves in HiPhyEngine are linear segments. If the curves are created from a higher order discretization, please make sure the simulation curve has enough resolution to capture the original shape.
+
+## Base Normal
+
+As one dimensional shapes, line segments can freely rotates around its edge without introducing any deformation. To disambiguate this symmetry, we need to introduce the concept of frame normals to the line segments, so when the line segment rotates around its edge, the frame normal rotates around the edge as well to allow us to differentiate the line segment and rotated line segments as two different configurations.
+
+In practice, what the frame normal is, is of little importance, as long as it is perpendicular to the edge.
+
+The <span class="boxed-word">Add base normal to curve</span> button automatically creates the base normal attribute on the curves objects. Without the **base normal** attribute, curves can not be used HiPhyEngine simulation
+
+## Root Constraints
+
+Given the required special **base normal** on the elastic rod objects, when constraining the elastic rod objects, we also need to constrain the **base normal** to prevent the elastic rods freely rotating along its edges. **Root constraints** constraints not only the position but the base normal of the elastic rods.
+
+To create a **root constraint** in Blender, select the curves and the mesh you wish the root of the curves to anchor to, in <span class="boxed-word">Object Mode</span>, choose, <span class="boxed-word">Hi Phy Create Root Constraint</span> in the pop up menu. It will create a constraint that binds the position and base normal of the first vertex of each curve to the mesh.
+
+<figure markdown="span" class="center-figure">
+  ![Floor](../images/material-models/create-root-constraint.png){ width="150" }
+</figure>
+
+## Preloading
+
+Under gravity and other external forces, elastic rods can under goes large amount of deformation and fails to maintain its designed shapes. The preloading process compensates the external forces so the elastic rods can maintain it's designed shape. In contrast to using **target shapes** which can create unnatural motions, preloading creates more fluid results. However, preload to full can result in a floaty motion. It is advised to use a map to preload less on the root or the rods and more on the tip the rods.
+
+Preloading can only maintain the static designed shape. For hitting key shapes in motion, **target shapes** is still the best way to achieve that.
+
+Preloading process modifies the **rest shape** object. Similar to the restriction on the simulation object, if user wish to use the preloading process, please make sure there is no modifier stack on the **rest shape** that changes the vertex positions or the topology.
+
+Preloading curves button lives on the **solver** object.
+
+## Continuous Time Collision
+
+Unlike meshes, curves do not have a self-intersecting state. However, during simulation, curves can still pass each other. In the case of curves, such scenario will not lead to a self-intersecting bad state for the simulator. Therefore, we allow user to turn off **continuous time collision** for elastic rods as a global **solver** setting. When **continuous time collision** is turned off, we allow curves to pass each other during simulation, the simulator will use spring based collision and parameters (**Self Spring Collision Stiffness**, **Self Spring Collision Damping**, and **Self Spring Collision Friction**) instead of the barrier based collision and parameters (**Barrier Stiffness**, and **Friction Coefficient**).
+
+### Examples
+
+You can find the an example file for elastic rod simulation [here](../demos/elastic-rod-demo.blend).
+
+<figure markdown="span" class="center-figure">
+  ![Elastic Rod Demo](../images/material-models/elastic-rod-demo-1.png){ width="300" }
+</figure>
+
+<figure markdown="span" class="center-figure">
+  ![Elastic Rod Demo](../images/material-models/elastic-rod-demo-2.png){ width="300" }
+</figure>
+
+You can find the an example file for elastic rod preloading [here](../demos/elastic-rod-preload-demo.blend).
+
+Settling before preloading
+
+<figure markdown="span" class="center-figure">
+  ![Elastic Rod Demo Preloading Before](../images/material-models/elastic-rod-preload-before.png){ width="300" }
+</figure>
+
+Settling after preloading
+
+<figure markdown="span" class="center-figure">
+  ![Elastic Rod Demo Preloading After](../images/material-models/elastic-rod-preload-after.png){ width="300" }
+</figure>

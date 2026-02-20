@@ -1,0 +1,919 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../constraints-in-blender/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Force Field and Expression in Blender - HiPhyEngine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#force-field-and-expression-in-blender" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="HiPhyEngine" class="md-header__button md-logo" aria-label="HiPhyEngine" data-md-component="logo">
+      
+  <img src="../../images/hiphy-logo-mid.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HiPhyEngine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Force Field and Expression in Blender
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="HiPhyEngine" class="md-nav__button md-logo" aria-label="HiPhyEngine" data-md-component="logo">
+      
+  <img src="../../images/hiphy-logo-mid.png" alt="logo">
+
+    </a>
+    HiPhyEngine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quick Start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quick Start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/quick-start-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blender Quick Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/how-hiphyengine-blender-addon-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How HiPhyEngine Blender Addon Works
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Material Models
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Material Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/material-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/affine-body/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Affine Body
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/elastic-rod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elastic Rod
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/cloth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/deformable-body/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deformable Body
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/soft-collider/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soft Collider
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Auxiliary Nodes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Auxiliary Nodes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../property-map-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Property Map in Blender
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constraints in Blender
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Force Field and Expression in Blender
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Force Field and Expression in Blender
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#force-field" class="md-nav__link">
+    Force Field
+  </a>
+  
+    <nav class="md-nav" aria-label="Force Field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simulation-parameters" class="md-nav__link">
+    Simulation Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization-parameters" class="md-nav__link">
+    Visualization Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expression-attributes" class="md-nav__link">
+    Expression Attributes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#force-field" class="md-nav__link">
+    Force Field
+  </a>
+  
+    <nav class="md-nav" aria-label="Force Field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simulation-parameters" class="md-nav__link">
+    Simulation Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization-parameters" class="md-nav__link">
+    Visualization Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expression-attributes" class="md-nav__link">
+    Expression Attributes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="force-field-and-expression-in-blender">Force Field and Expression in Blender<a class="headerlink" href="#force-field-and-expression-in-blender" title="Permanent link">#</a></h1>
+<p>HiPhyEngine supports force field and expression to enable user to procedually create maps and external forces. The expression language used is <a href="https://github.com/wdas/SeExpr">SeExpr2</a>. Expression language provide an simple way for artists to programmably create a per-point value for simulation.</p>
+<h2 id="force-field">Force Field<a class="headerlink" href="#force-field" title="Permanent link">#</a></h2>
+<p>For visualization purposes, <strong>force field</strong> objects must be a <strong>mesh</strong> objects. In the examples, we used a plane as the force field object.
+Enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel and select <span class="boxed-word">Force Field</span>, it will make the object a force field object for HiPhyEngine.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/force-field-ui.png" data-desc-position="bottom"><img alt="Force Field UI" src="../../images/aux-nodes/force-field-ui.png" width="150"></a>
+</figure>
+<h3 id="simulation-parameters">Simulation Parameters<a class="headerlink" href="#simulation-parameters" title="Permanent link">#</a></h3>
+<p>The <strong>solver</strong> parameter is the <strong>solver</strong> object associated with the force field.</p>
+<p>The <strong>expression</strong> parameter is the <strong>SeExpr</strong> expression for the force field. Force field expression currently supports <strong>$P</strong> (vertex position), and <strong>$time</strong> (time) variables. The expression must be of the type <strong>Vector3</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title"><strong>$P</strong> space</p>
+<p>The <strong>$P</strong> is the vertex position in the <strong>force field</strong>. It is intended so that user can use the transform of the force field object to move and rotate the generated force field without change the expression itself.</p>
+</div>
+<p>The <strong>multiplier</strong> parameter applies a single scalar factor to scale up the force field expression. It is for a fast way to scale up the force value uniformly without adjusting the expression.</p>
+<div class="admonition note">
+<p class="admonition-title"><strong>$time</strong></p>
+<p><strong>$time</strong> is the time inside the simulator, respecting the <strong>solver</strong>'s <strong>frame rate</strong> and <strong>time scale</strong> parameter. It is intended so that when <strong>force field</strong> is evaluated during simulation, the <strong>$time</strong> will match the visualization.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">The unit of the force field</p>
+<p>Dispite of the name, the unit for <strong>force field</strong> is <span class="arithmatex">\(10\mu N/cm^2\)</span> (presure) for mesh objects (<strong>affine body</strong>, <strong>cloth</strong>, and <strong>deformable body</strong>), <span class="arithmatex">\(10\mu N/cm\)</span> for curve objects (elastic rod). It is so that the force field's influence is resolution independent.</p>
+</div>
+<p>The <strong>applies to</strong> parameter is a list of all objects that the force field influences. For each object, user can apply a different weight. Please make sure the simulation object is in the same solver as the force field.</p>
+<h3 id="visualization-parameters">Visualization Parameters<a class="headerlink" href="#visualization-parameters" title="Permanent link">#</a></h3>
+<p>To visualize the <strong>force field</strong>, user can use the visualization parameters, set a range and number of slice. Click <span class="boxed-word">Update Visualization Mesh</span> to update the <strong>force field</strong> mesh. When <span class="boxed-word">Live Update</span> is checked, the visualization mesh will also automatically update with the change of frame.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/force-field-visualization.png" data-desc-position="bottom"><img alt="Force Field Visualization" src="../../images/aux-nodes/force-field-visualization.png" width="300"></a>
+</figure>
+<p>An example for using the forcefield can be find <a href="../../demos/force-field-demo.blend">here</a>.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/force-field-demo-1.png" data-desc-position="bottom"><img alt="Force Field Demo" src="../../images/aux-nodes/force-field-demo-1.png" width="300"></a>
+</figure>
+<h2 id="expression-attributes">Expression Attributes<a class="headerlink" href="#expression-attributes" title="Permanent link">#</a></h2>
+<p>HiPhyEngine supports using per point attribute for the <a href="../property-map-in-blender/">mappable properties</a>. User can use tools in Blender to create and animate the attributes. We also provide a tool for user to create point attributes using SeExpr expressions.</p>
+<p>To create <strong>expression attribute</strong>, enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel. Creating <strong>expression attribute</strong> does <strong>not</strong> require the object to be a HiPhy simulation object.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/expression-property.png" data-desc-position="bottom"><img alt="Expression Property" src="../../images/aux-nodes/expression-property.png" width="300"></a>
+</figure>
+<p>User can create any number of <strong>expression attributes</strong>, by adding them to the list. HiPhyEngine will automatically parse the expression and create the attribute with the proper type.
+The <strong>expression attribute</strong> currently supports <strong>$P</strong>, <strong>$t</strong>, <strong>$u</strong>, <strong>$v</strong> and <strong>$time</strong> (time) variables. <strong>$P</strong> is evaluated as the <strong>position</strong> attribute, <strong>$t</strong> is evaluated as the <strong>hi_phy_parameterization</strong> attribute, <strong>$u</strong> is evaluated as the <strong>hi_phy_u</strong> attribute, <strong>$v</strong> is evaluated as the <strong>hi_phy_v</strong> attribute, <strong>$time</strong> is the current scene time.
+In addition to the parameters above, we provides three float and three vector attributes as arbitrary inputs. The three float attributes are <strong>$v1</strong>, <strong>$v2</strong>, and <strong>$v3</strong>. They are evaluated as <strong>hi_phy_v1</strong>, <strong>hi_phy_v2</strong>, and <strong>hi_phy_v3</strong>. The three vector attributes are <strong>$vv1</strong>, <strong>$vv2</strong>, and <strong>$vv3</strong>. They are evaluated as <strong>hi_phy_vv1</strong>, <strong>hi_phy_vv2</strong>, and <strong>hi_phy_vv3</strong>.
+<strong>All the attributes must be per-vertex (point domain)</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title"><strong>$u</strong> and <strong>$v</strong></p>
+<p><strong>$u</strong> is evaluated as the <strong>hi_phy_u</strong> attribute, <strong>$v</strong> is evaluated as the <strong>hi_phy_v</strong> attribute. Not the <strong>hi_phy_cloth_uv</strong> attribute. This is intented to decouple the cloth material parameterization from the expression parameter, to give user more control over the expressions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><strong>$time</strong></p>
+<p>Different from the <strong>force field</strong>, <strong>expression attribute</strong> are not associated with a solver, and is evaluated in Blender (instead of inside the simulator like the <strong>force fields</strong>). So the <strong>$time</strong> here is the scene time, not the simulator time.</p>
+</div>
+<p>User can use the <span class="boxed-word">Evaluate Expression Attribute</span> button to manually evaluate the expression at the current time and set to the corresponding Blender attribute. Or with the <span class="boxed-word">Live Update</span> option checked, the attributes will be automatically updated with frame change.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/map-blender-expression.png" data-desc-position="bottom"><img alt="Blender Map" src="../../images/aux-nodes/map-blender-expression.png" width="500"></a>
+</figure>
+<p>To use the <strong>expression attribute</strong> for simulation, it follows the same process as other <a href="../property-map-in-blender/">mappable properties</a>. Check the box next to the simulation property in question, then type in the attribute name will be used for that property.</p>
+<p>An example for <strong>expression attribute</strong> can be found <a href="../../demos/expression-attribute-demo.blend">here</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 HiPhyEngine
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

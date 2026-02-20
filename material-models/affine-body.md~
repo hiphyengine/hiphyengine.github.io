@@ -1,0 +1,55 @@
+# Affine Body
+
+Affine body is the material model for simulating stiff materials. Affine body objects must be triangulated meshes.
+
+## Related Objects
+
+{% include "./solver-node.md" %}
+
+{% include "./driven-shape.md" %}
+
+## Material Properties
+
+| Property Name               | Description                                          |    Unit                    |  Is Mappable | Is Animatable |
+| --------------------------- | ---------------------------------------------------- | -------------------------- | ------------ | ------------- |
+| Gravity                     | The gravitaional acceleration                        |  $cm/s^2$                  |      YES     |       YES     |
+| External Force              | Additional external force                            |  $10\mu N = g*cm/s^2$      |      YES     |       YES     |
+| Inner Thickness             | The thickness along the negative normal direction    |  Model                     |      YES     |       YES     |
+| Outer Thickness             | The thickness along the positive normal direction    |  Model                     |      YES     |       YES     |
+| Inner Friction Coefficient  | The friction coefficient for the inside              | Unitless                   |      YES     |       YES     |
+| Outer Friction Coefficient  | The friction coefficient for the outside             | Unitless                   |      YES     |       YES     |
+| Barrier Stiffness           | The stiffness of the collision barrier for contact   | $10\mu N = g*cm/s^2$       |      YES     |       YES     |
+| Density                     | Surface density of the affind body object            |  $g/cm^2$                  |      YES     |       YES     |
+| Stiffness                   | Material stiffness of the affine body                |  $100 nJ = g*cm^2/s^2$     |      YES     |       YES     |
+| Mass Damping                | Damping of all motion of the affine body             |  $1/s$                     |      YES     |       YES     |
+
+!!! note "Model Unit"
+    Model unit is a special unit that does not scale with the solver scale. See solver section for more detail.
+    
+!!! note "Density"
+    Affine body density is computed using the surface area, not the volume. So the density attribute is of unit $g/cm^2$ not $g/cm^3$
+
+!!! note "Friction Coefficient"
+    Friction coefficients are multiplicative. If a surface  with friction coefficient $0.1$ comes in contact with another surface of friction coefficient $0.1$, the resulting friction coefficient is $0.1 \times 0.1 = 0.01$
+
+!!! note "Barrier Stiffness"
+    The contact stiffness of barrier has the unit of $10\mu N$ instead of $10\mu N/cm$. It ensures that the contact stiffness is thickness invariant, i.e. user will not need to change the contact stiffness if the thickness of the object has changed to ensure the contact barrier exerts the same amount of force.
+
+!!! note "Stiffness"
+    Affine body should have very high stiffness value, the default stiffness value reflects that. During contact or simulation, the affine body can deform slightly (invisible to the human eye), such deformation allows it to be couple withou other deformable materials easily. In general, we want the stiffness to be high enough so the deformation will be hidden visually.
+
+### Examples
+
+You can find the an example file for affine body simulation [here](../demos/affine-body-demo.blend). It comes with a script to create generate a stacked affine body walls.
+
+<figure markdown="span" class="center-figure">
+  ![Floor](../images/material-models/affine-body-demo-1.png){ width="300" }
+</figure>
+
+<figure markdown="span" class="center-figure">
+  ![Floor](../images/material-models/affine-body-demo-2.png){ width="300" }
+</figure>
+
+<figure markdown="span" class="center-figure">
+  ![Floor](../images/material-models/affine-body-demo-3.png){ width="300" }
+</figure>
