@@ -134,7 +134,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_3" hidden>
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -142,19 +142,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_3">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -806,12 +796,12 @@
 </dd>
 <dt><code>Target Shape</code></dt>
 <dd>
-<p>During simulation, the <strong>Target Shape</strong> creates a force to pull the simulation object towards the <strong>Target Shape</strong>. It designed for achieving art directed shape. The strength of the pulling force is controlled <strong>Target Stiffness</strong> and <strong>Target Damping</strong> parameter. <strong>Target Shape</strong> needs to have the same number of vertices as the simulation object.</p>
+<p>During simulation, the <strong>Target Shape</strong> creates a force to pull the simulation object towards the <strong>Target Shape</strong>. It designed for achieving art directed shape during motion. The strength of the pulling force is controlled <strong>Target Stiffness</strong> and <strong>Target Damping</strong> parameter. <strong>Target Shape</strong> needs to have the same number of vertices as the simulation object.</p>
 </dd>
 <dt><code>Driven Shape</code></dt>
 <dd>
-<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point before any modifier is applied, while during export, all modifiers of the simulation object is applied. This means there should not have any modifiers that changes point position or topology on the simulation object. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
-When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> instead of the simulation object when simulation is finished.</p>
+<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point attribute before any modifier is applied. While during export, all modifiers of the simulation object is applied. This means that having any modifiers on the simulation object that changes point position or vertex count on the simulation object will leads to a discrepancy between the simulation mesh and the simulation cache. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
+When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> (instead of the simulation object).</p>
 </dd>
 <dt><code>Mesh Bone</code></dt>
 <dd>
@@ -845,14 +835,14 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <td>YES</td>
 </tr>
 <tr>
-<td>Can Collider With Other Simulation Object</td>
+<td>Can Collide With Other Simulation Object</td>
 <td>Can this simulation object collide with other simulation objects</td>
 <td></td>
 <td>YES</td>
 <td>YES</td>
 </tr>
 <tr>
-<td>Can Collider With Colliders</td>
+<td>Can Collide With Colliders</td>
 <td>Can this simulation object collide with kinematic colliders</td>
 <td></td>
 <td>YES</td>
@@ -932,20 +922,20 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </table>
 <div class="admonition note">
 <p class="admonition-title">Mesh Bone Parameters</p>
-<p>Mesh bone parameters (<strong>Mesh Bone Stiffness</strong> and <strong>Mesh Bone Damping</strong>) are mappable. However, given <strong>mesh bone</strong> may be have different number of vertices as the <strong>simulation mesh</strong>, the maps (attributes) will live on the <strong>mesh bone</strong> instead of the <strong>simulation mesh</strong>. You can find an example of this map set up <a href="../../demos/deformable-body-bone-demo-with-map.blend">here</a>. User can find more on maps in the <a href="../../aux-nodes/property-map-in-blender/">here</a>.</p>
+<p>Mesh bone parameters (<strong>Mesh Bone Stiffness</strong> and <strong>Mesh Bone Damping</strong>) are mappable. However, given <strong>mesh bone</strong> may be have different number of vertices as the <strong>simulation mesh</strong>, the maps (attributes) will live on the <strong>mesh bone</strong> instead of the <strong>simulation mesh</strong>. You can find an example of this map set up <a href="../../demos/deformable-body-bone-demo-with-map.blend">here</a>. User can find more on maps in the <a href="../../aux-nodes/property-map-in-blender/">property map section</a>.</p>
 </div>
 <h3 id="grid-embedding">Grid Embedding<a class="headerlink" href="#grid-embedding" title="Permanent link">#</a></h3>
-<p>Deformable Body in HiPhyEngine is an implementation of the work by <a href="https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf">McAdams et. al.</a>. It embeds the simulation in a hidden 3D grid. All deformable bodies share the same grid. Therefore the parameters related to the grid reside on the <strong>solver</strong> node.</p>
-<p>In the solver node, user can choose between the <strong>corotated linear elastic</strong> and <strong>stable neohookean</strong> model. <strong>corotated linear elastic</strong> is faster, but will suffer more volume loss with larger deformation. <strong>stable neohookean</strong> can handle large deformation better, but is slower. They share the same elastic arameters, and the material model attribute can be keyed and animated if needed.</p>
+<p>Deformable Body in <strong>HiPhyEngine</strong> is an implementation of the work by <a href="https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf">McAdams et. al.</a>. It embeds the simulation in a hidden 3D grid. All deformable bodies share the same grid. Therefore the parameters related to the grid reside on the <strong>solver</strong> node.</p>
+<p>In the solver node, user can choose between the <strong>corotated linear elastic</strong> and <strong>stable NeoHookean</strong> model. <strong>corotated linear elastic</strong> is faster, but will suffer more volume loss with larger deformation. <strong>stable NeoHookean</strong> can handle large deformation better, but is slower. They share the same elastic parameters, and the material model attribute can be keyed and animated if needed.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/deformable-body-material-models.png" data-desc-position="bottom"><img alt="Deformable Body" src="../../images/material-models/deformable-body-material-models.png" width="300"></a>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Grid Resolution</p>
-<p>Higher grid resolution will have a significant impact on the simulation performance, however, large grid size may lead to undesirable artifacts. For instance, if two mesh faces are rasterized in the same grid cell, the simulation will not be able to separate them. It will up to the user to try to see what resolution best fit there scene. For a general humanoid character, <span class="arithmatex">\(1cm\)</span> cell size is a good start. However, it is worth noting that the <strong>grid cell size</strong> parameter is in <strong>model</strong> unit. It is intended for ease of measurement. If your character is about 100 units in the scene, and you set the grid cell size as 1, the resolution of the simulation grid of will be about 100. Please see the <a href="../../aux-nodes/solver/">solver</a> for more details on <strong>model unit</strong>.</p>
+<p>Higher grid resolution will have a significant impact on the simulation performance. However, large grid size may lead to undesirable artifacts. For instance, if two mesh faces are rasterized in the same grid cell, the simulation will not be able to separate them. It will up to the user to try to see what resolution best fit each scene. For a general humanoid character, <span class="arithmatex">\(1cm\)</span> cell size is a good start. However, it is worth noting that the <strong>grid cell size</strong> parameter is in <strong>model</strong> unit. It is intended for ease of measurement. If your character is about 100 units in the scene, and you set the grid cell size as 1, the resolution of the simulation grid of will be about 100. Please see the <a href="../../aux-nodes/solver/">solver</a> for more details on <strong>model unit</strong>.</p>
 </div>
 <p>Furthermore, the HiPhyEngine uses a series of coarse to fine grid to speed up the simulation speed. The method is called the multigrid method. The performance of the multigrid of method deeply depends on the complexity of the mesh, if the mesh is regular such as round or cube shaped, the smallest grid can be 8x8x8 and the multigrid method can achieve very good performance, however, if the mesh has features such as thin limbs, the smallest grid size might need to be 16x16x16 or even 32x32x32 to capture those features. Once again, it will up to user to play with the setting to find the optimal solution for each scene. Luckily, even if the setting is not optimal, the simulator will still work, just it will take a bit longer to simulate. </p>
-<p>Here are the list parameters on the solver that is related the deformable body multigrid solver</p>
+<p>Here is the list of parameters on the <strong>solver</strong> that are related to the deformable body multigrid.</p>
 <table>
 <thead>
 <tr>
@@ -997,6 +987,10 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <div class="admonition note">
 <p class="admonition-title">Smoother Damping and Iterations</p>
 <p>Those parameters are for more advanced users. For more details of the smoother, user can refer to the work by <a href="https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf">McAdams et. al.</a>. But in most cases, user can leave <strong>smoothing iteration damping</strong> as what it is. If the deformable body simulation takes a lot of iterations to solve the CG system, user can increase <strong>smoothing iteration</strong> and <strong>bottom smoothing iteration</strong> to see if improves the convergence. They are animatable parameter as well. So user can choose to add more iterations for frames with more motions, while reducing them for more static frames.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Multigrid Level</p>
+<p>To efficiently solve the elastic system, the multigrid method construct a hierarchy of grid each with half of the resolution of the previous level. The low resolution grid serves as a rough estimate for the fine level grid. If the simulation mesh is too complex, lower resolution will not be able to represent the mesh very well, and reduce the convergence rate. In practice, 16x16x16 or 32x32x32 for the lowest level resolution are good starting points, if user wish to tune the parameter for the best convergence behavior.</p>
 </div>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
 <p>You can find the an example file for deformable body simulation <a href="../../demos/deformable-body-demo.blend">here</a>.</p>

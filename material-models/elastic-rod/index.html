@@ -134,7 +134,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_3" hidden>
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -142,19 +142,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_3">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -880,17 +870,17 @@
 </dd>
 <dt><code>Target Shape</code></dt>
 <dd>
-<p>During simulation, the <strong>Target Shape</strong> creates a force to pull the simulation object towards the <strong>Target Shape</strong>. It designed for achieving art directed shape. The strength of the pulling force is controlled <strong>Target Stiffness</strong> and <strong>Target Damping</strong> parameter. <strong>Target Shape</strong> needs to have the same number of vertices as the simulation object.</p>
+<p>During simulation, the <strong>Target Shape</strong> creates a force to pull the simulation object towards the <strong>Target Shape</strong>. It designed for achieving art directed shape during motion. The strength of the pulling force is controlled <strong>Target Stiffness</strong> and <strong>Target Damping</strong> parameter. <strong>Target Shape</strong> needs to have the same number of vertices as the simulation object.</p>
 </dd>
 <dt><code>Driven Shape</code></dt>
 <dd>
-<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point before any modifier is applied, while during export, all modifiers of the simulation object is applied. This means there should not have any modifiers that changes point position or topology on the simulation object. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
-When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> instead of the simulation object when simulation is finished.</p>
+<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point attribute before any modifier is applied. While during export, all modifiers of the simulation object is applied. This means that having any modifiers on the simulation object that changes point position or vertex count on the simulation object will leads to a discrepancy between the simulation mesh and the simulation cache. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
+When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> (instead of the simulation object).</p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Poly line vs other curves types</p>
-<p>Elastic rod simulation objects, and by extension, the <strong>driven shape</strong> must be <strong>poly curves</strong> objects. For <strong>driven shape</strong> this requirement is only true before applying <strong>any modifier</strong> or <strong>geometry nodes</strong>. User can use <strong>geometry node</strong> on the <strong>driven shape</strong> to convert the poly curves to other curve objects for rendering.</p>
+<p>Elastic rod simulation object, and its <strong>driven shape</strong> must be <strong>poly curves</strong> objects. For <strong>driven shape</strong> this requirement is only true before applying <strong>any modifier</strong> or <strong>geometry nodes</strong>. User can use <strong>geometry node</strong> on the <strong>driven shape</strong> to convert the poly curves to other curve objects for rendering. See the last <a href="#examples">example</a> for how to use <strong>geometry node</strong> on the <strong>driven shape</strong> to upsample the curves for rendering.</p>
 </div>
 <h2 id="material-properties">Material Properties<a class="headerlink" href="#material-properties" title="Permanent link">#</a></h2>
 <table>
@@ -919,14 +909,14 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <td>YES</td>
 </tr>
 <tr>
-<td>Can Collider With Other Simulation Object</td>
+<td>Can Collide With Other Simulation Object</td>
 <td>Can this simulation object collide with other simulation objects</td>
 <td></td>
 <td>YES</td>
 <td>YES</td>
 </tr>
 <tr>
-<td>Can Collider With Colliders</td>
+<td>Can Collide With Colliders</td>
 <td>Can this simulation object collide with kinematic colliders</td>
 <td></td>
 <td>YES</td>
@@ -1053,7 +1043,7 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </tr>
 <tr>
 <td>Mass Damping</td>
-<td>Damping factor for all motions</td>
+<td>Damping factor for all motions, except for twists</td>
 <td><span class="arithmatex">\(1/s\)</span></td>
 <td>YES</td>
 <td>YES</td>
@@ -1077,21 +1067,21 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </div>
 <div class="admonition note">
 <p class="admonition-title">Friction Coefficient</p>
-<p>Friction coefficients are multiplicative. If a surface  with friction coefficient <span class="arithmatex">\(0.1\)</span> comes in contact with another surface of friction coefficient <span class="arithmatex">\(0.1\)</span>, the resulting friction coefficient is <span class="arithmatex">\(0.1 \times 0.1 = 0.01\)</span></p>
+<p>Friction coefficients are multiplicative. If a surface with friction coefficient <span class="arithmatex">\(0.1\)</span> comes in contact with another surface of friction coefficient <span class="arithmatex">\(0.1\)</span>, the resulting friction coefficient is <span class="arithmatex">\(0.1 \times 0.1 = 0.01\)</span></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Barrier vs Spring contact</p>
-<p>Contact between rod and rod is handled by springs instead of barriers. While contact between rod and collider and other types of objects are handled by barriers. Therefore, we have two seperate set of parameters <strong>Self Spring Collision Stiffness\Damping\Friction</strong> and <strong>Barrier Stiffness</strong> to control different contacts.</p>
+<p>Contacts between rod and rod are handled by springs instead of barriers, while contacts between rod and collider and other types of objects are handled by barriers. Therefore, we have two seperate set of parameters <strong>Self Spring Collision Stiffness\Damping\Friction</strong> and <strong>Barrier Stiffness</strong> to control different contacts.</p>
 </div>
 <h2 id="parameterization">Parameterization<a class="headerlink" href="#parameterization" title="Permanent link">#</a></h2>
-<p>HiPhyEngine supports expression languages such as <a href="https://github.com/wdas/SeExpr">SeExpr2</a>. In some cases, use might want to use the $t expression to procedurally generate a map for a given attribute.</p>
-<p>The <span class="boxed-word">Add parameterization attribute to curve</span> button creates an attribute on the curve that can be used by the expression later.</p>
+<p><strong>HiPhyEngine</strong> supports expression languages such as <a href="https://github.com/wdas/SeExpr">SeExpr2</a>. In some cases, use might want to use the $t expression to procedurally generate a map for a given attribute.</p>
+<p>The <span class="boxed-word">Add parameterization attribute to curve</span> button creates an attribute on the curve that can be used by the expression later. See <a href="../../aux-nodes/force-field-and-expression-in-blender/#expression-attributes">expression</a> for details on how the parameter is used in the expressions.</p>
 <h2 id="curves-order">Curves Order<a class="headerlink" href="#curves-order" title="Permanent link">#</a></h2>
-<p>Similar to all meshes in HiPhyEngine are linear elements (triangles), Curves in HiPhyEngine are linear segments. If the curves are created from a higher order discretization, please make sure the simulation curve has enough resolution to capture the original shape.</p>
+<p>Similar to all meshes in <strong>HiPhyEngine</strong> are linear elements (triangles), Curves in <strong>HiPhyEngine</strong> are linear segments. If the curves are created from a higher order discretization, please make sure the simulation curve is a poly curves object and has enough resolution to capture the original shape.</p>
 <h2 id="base-normal">Base Normal<a class="headerlink" href="#base-normal" title="Permanent link">#</a></h2>
-<p>As one dimensional shapes, line segments can freely rotates around its edge without introducing any deformation. To disambiguate this symmetry, we need to introduce the concept of frame normals to the line segments, so when the line segment rotates around its edge, the frame normal rotates around the edge as well to allow us to differentiate the line segment and rotated line segments as two different configurations.</p>
+<p>As one dimensional shapes, line segments can freely rotates around its edge without introducing any deformation. To disambiguate this symmetry, we need to introduce the concept of frame normals to the line segments. Therefore, when the line segment rotates around its edge, the frame normal rotates around the edge as well. It allows us to differentiate the line segment and rotated line segments as two different configurations.</p>
 <p>In practice, what the frame normal is, is of little importance, as long as it is perpendicular to the edge.</p>
-<p>The <span class="boxed-word">Add base normal to curve</span> button automatically creates the base normal attribute on the curves objects. Without the <strong>base normal</strong> attribute, curves can not be used HiPhyEngine simulation</p>
+<p>The <span class="boxed-word">Add base normal to curve</span> button automatically creates the base normal attribute on the curves objects. Without the <strong>base normal</strong> attribute, curves can not be used <strong>HiPhyEngine</strong> simulation.</p>
 <h2 id="root-constraint">Root Constraint<a class="headerlink" href="#root-constraint" title="Permanent link">#</a></h2>
 <p>Given the required special <strong>base normal</strong> on the elastic rod objects, when constraining the elastic rod objects, we also need to constrain the <strong>base normal</strong> to prevent the elastic rods freely rotating along its edges. <a href="../../aux-nodes/constraints-in-blender/#root-constraint"><strong>Root constraint</strong></a> constraints not only the position but the base normal of the elastic rods.</p>
 <p>To create a <strong>root constraint</strong> in Blender, select the curves and the mesh you wish the root of the curves to anchor to, in <span class="boxed-word">Object Mode</span>, choose, <span class="boxed-word">Hi Phy Create Root Constraint</span> in the pop up menu. It will create a constraint that binds the position and base normal of the first vertex of each curve to the mesh.</p>
@@ -1099,12 +1089,12 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/create-root-constraint.png" data-desc-position="bottom"><img alt="Floor" src="../../images/material-models/create-root-constraint.png" width="150"></a>
 </figure>
 <h2 id="preloading">Preloading<a class="headerlink" href="#preloading" title="Permanent link">#</a></h2>
-<p>Under gravity and other external forces, elastic rods can under goes large amount of deformation and fails to maintain its designed shapes. The preloading process compensates the external forces so the elastic rods can maintain it's designed shape. In contrast to using <strong>target shapes</strong> which can create unnatural motions, preloading creates more fluid results. However, preload to full can result in a floaty motion. It is advised to use a map to preload less on the root or the rods and more on the tip the rods.</p>
+<p>Under gravity and other external forces, elastic rods can undergo large amount of deformation and fails to maintain its designed shapes. The preloading process computes the rest shape that compensates the external forces, so the elastic rods can maintain it's designed shape. In contrast to using <strong>target shapes</strong> which can create unnatural motions, preloading creates more fluid results. However, preload to full can result in a floaty motion. It is advised to use a map for <strong>Preloading Percentage</strong> to preload less on the root or the rods and more on the tip the rods.</p>
 <p>Preloading can only maintain the static designed shape. For hitting key shapes in motion, <strong>target shapes</strong> is still the best way to achieve that.</p>
 <p>Preloading process modifies the <strong>rest shape</strong> object. Similar to the restriction on the simulation object, if user wish to use the preloading process, please make sure there is no modifier stack on the <strong>rest shape</strong> that changes the vertex positions or the topology.</p>
-<p>Preloading curves button lives on the <strong>solver</strong> object. The preloading process gradually increases the force on the curves in the number of steps dictated by the <strong>curve preloading substeps</strong>.</p>
+<p>Preloading curves button lives on the <strong>solver</strong> object. The preloading process gradually increases the force on the curves in the number of steps dictated by the <strong>curve preloading substeps</strong>. <strong>curve preloading substeps</strong> also defines the resolution of the <strong>Preloading Percentage</strong> parameter. By default, the preloading process takes 100 substeps, so <strong>Preloading Percentage</strong> has an effective resolution of 0.01.</p>
 <h2 id="continuous-time-collision">Continuous Time Collision<a class="headerlink" href="#continuous-time-collision" title="Permanent link">#</a></h2>
-<p>Unlike meshes, curves are line segments that do not have a self-intersecting state. However, during simulation, curves can still pass each other. In the case of curves, such scenario will not lead to a self-intersecting bad state for the simulator. Therefore, we allow user to turn off <strong>continuous time collision</strong> for elastic rods as a global <strong>solver</strong> setting.</p>
+<p>Unlike meshes, curves are line segments that do not have a self-intersecting state. However, during simulation, curves can still pass each other. In the case of curves, such scenario will not lead to a self-intersecting invalid state for the simulator. Therefore, we allow user to turn off <strong>continuous time collision</strong> for elastic rods as a global <strong>solver</strong> setting.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
 <p>You can find the an example file for elastic rod simulation <a href="../../demos/elastic-rod-demo.blend">here</a>.</p>
 <figure class="center-figure">
@@ -1122,11 +1112,11 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/elastic-rod-preload-after.png" data-desc-position="bottom"><img alt="Elastic Rod Demo Preloading After" src="../../images/material-models/elastic-rod-preload-after.png" width="300"></a>
 </figure>
-<p>An example of coupling elastic rod and affine body can be find <a href="../../demos/weaved-cloth-demo.blend">here</a>. This example showed case how to apply additional geometry nodes and modifier after simulation.</p>
+<p>An example of coupling elastic rod and affine body can be find <a href="../../demos/weaved-cloth-demo.blend">here</a>.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/weave-demo-1.png" data-desc-position="bottom"><img alt="Weave Demo 1" src="../../images/material-models/weave-demo-1.png" width="300"></a>
 </figure>
-<p><strong>HiPhyEngie</strong> is able to accurately resolve all collisions allows <strong>affine bodies</strong> to slide between the <strong>elastic rods</strong> gaps. Dispite the high velocity impact, the weave pattern of the rods is mainttained from <strong>HiPhyEngie</strong>'s intersection free guerantee.</p>
+<p><strong>HiPhyEngine</strong> is able to accurately resolve all collisions. It allows <strong>affine bodies</strong> to slide between the <strong>elastic rods</strong> gaps. Despite of the high velocity impact, the weave pattern of the rods is maintained from <strong>HiPhyEngie</strong>'s intersection free guarantee. In this example, we also demonstrate how to use geometry node on the <strong>driven shape</strong> to upsample the simulation results for rendering.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/weave-demo-2.png" data-desc-position="bottom"><img alt="Weave Demo 2" src="../../images/material-models/weave-demo-2.png" width="300"></a>
 </figure>

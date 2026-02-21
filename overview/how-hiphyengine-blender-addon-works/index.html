@@ -134,7 +134,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_3" hidden>
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -142,19 +142,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_3">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -785,15 +775,15 @@
                   
 
 
-<h1 id="how-hiphyengine-blender-addon-works">How HiPhyEngine Blender Addon Works<a class="headerlink" href="#how-hiphyengine-blender-addon-works" title="Permanent link">#</a></h1>
-<p>HiPhyEngine is a standard Python addon for Blender. It gets and sets the scene data through only the Blender Python API. Due to this limitation, there is a few limitations on how the simulation rigs can be set up.</p>
+<h1 id="how-hiphyengine-blender-addon-works">How <strong>HiPhyEngine</strong> Blender Addon Works<a class="headerlink" href="#how-hiphyengine-blender-addon-works" title="Permanent link">#</a></h1>
+<p><strong>HiPhyEngine</strong> is a standard Python addon for Blender. It gets and sets the scene data through only the Blender Python API. Due to this constraint, there is a few limitations on how the simulation rigs can be set up.</p>
 <h2 id="scene-export">Scene Export<a class="headerlink" href="#scene-export" title="Permanent link">#</a></h2>
-<p>When a simulation is kicked off HiPhyEngine solver will go through the time line one frame at a time and export all relevent scene objects. This process will use the final evaluated object from the editor, so only modifiers visible in the editor will be picked up.</p>
+<p>When a simulation is kicked off <strong>HiPhyEngine</strong> solver will go through the timeline one frame at a time and export all relevant scene objects. This process will use the final evaluated object from the editor, so only modifiers visible in the editor will be picked up.</p>
 <h2 id="simulation-deformation">Simulation Deformation<a class="headerlink" href="#simulation-deformation" title="Permanent link">#</a></h2>
-<p>However, when bring back of the result of the simulation, due to the limitation of Blender's Python API, HiPhyEngine can not deform the simulation object at the end of the modifier chain. The deformation of the position attribute from the simulator will be at the start of the modifier chain, which means, any modifier that changes the position or topology of the simulation object will leads to issues.</p>
-<p>Therefore, simulation objects for HiPhyEngine needs to have a minimal modifier chain (triangulate is one of the few modifiers that is ok to use). If you wish to apply modifier chains after the simulator, you need to create a second object, and use the simulation object to deform the second object, and apply your desired modifer chain on the second object after the deform modifer.</p>
+<p>When bringing back the result of the simulation, due to the limitation of Blender's Python API, <strong>HiPhyEngine</strong> can not deform the simulation object at the end of the modifier chain. The deformation of the position attribute from the simulator will be applied at the start of the modifier chain. It means that any modifier that changes the position or topology of the simulation object will cause issues.</p>
+<p>Therefore, simulation objects for <strong>HiPhyEngine</strong> needs to have a minimal modifier chain (<strong>triangulate</strong> is one of the few modifiers that is ok to use). If you wish to apply modifier chains after the simulator, you need to create a second object, and use the simulation object to deform the second object, and apply your desired modifier chain on the second object after the deform modifier. The <a href="../material-models/affine-body/#related-objects"><strong>Driven shape</strong></a> is designed circumvent such limitation.</p>
 <h2 id="simulation-cache-management">Simulation Cache Management<a class="headerlink" href="#simulation-cache-management" title="Permanent link">#</a></h2>
-<p>Another limitation to the Blender Python API is there is no application close callback. So the simulator will not be able to prompt a pop up to save the simulation cache if the simulation cache is dirty. User will have to manually save/load the simulation cache as needed from the solver panel.</p>
+<p>Due to the potential large size of the simulation cache, we decided not to automatically save the cache whenever blender is saved to prevent frequent slowdowns and disk i/o during saves for large scale simulations. User will have to manually save/load the cache use the provided button on the <strong>solver node</strong> and operator calls. It also leaves the potential for users to create scripts to version-manage simulation caches, without worrying that the <strong>HiPhyEngine</strong> automatically overrides the simulation cache files when saving the Blender file.</p>
 
 
 

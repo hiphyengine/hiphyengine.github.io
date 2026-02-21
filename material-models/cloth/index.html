@@ -134,7 +134,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_3" hidden>
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -142,19 +142,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_3">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -822,18 +812,14 @@
 <dd>
 <p>The <strong>Rest Shape</strong> is the object for defining the shape at <strong>rest</strong>. The simulation object will returns to the <strong>Rest Shape</strong> when there is no external force. When no <strong>Rest Shape</strong> is specified, the start frame of the simulation object is used as the <strong>Rest Shape</strong>. <strong>Rest Shape</strong> needs to have the same number of vertices as the simulation object.</p>
 </dd>
-<dt><code>Preload Reference Shape</code></dt>
-<dd>
-<p>During simulation, external force such as gravity will change the designed shape. The preloading process solves the <strong>rest shape</strong> needed to maintain the <strong>preload reference shape</strong> under the given external force. See <a href="#preloading">preloading</a> for more detail.</p>
-</dd>
 <dt><code>Target Shape</code></dt>
 <dd>
-<p>During simulation, the <strong>Target Shape</strong> creates a force to pull the simulation object towards the <strong>Target Shape</strong>. It designed for achieving art directed shape. The strength of the pulling force is controlled <strong>Target Stiffness</strong> and <strong>Target Damping</strong> parameter. <strong>Target Shape</strong> needs to have the same number of vertices as the simulation object.</p>
+<p>During simulation, the <strong>Target Shape</strong> creates a force to pull the simulation object towards the <strong>Target Shape</strong>. It designed for achieving art directed shape during motion. The strength of the pulling force is controlled <strong>Target Stiffness</strong> and <strong>Target Damping</strong> parameter. <strong>Target Shape</strong> needs to have the same number of vertices as the simulation object.</p>
 </dd>
 <dt><code>Driven Shape</code></dt>
 <dd>
-<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point before any modifier is applied, while during export, all modifiers of the simulation object is applied. This means there should not have any modifiers that changes point position or topology on the simulation object. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
-When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> instead of the simulation object when simulation is finished.</p>
+<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point attribute before any modifier is applied. While during export, all modifiers of the simulation object is applied. This means that having any modifiers on the simulation object that changes point position or vertex count on the simulation object will leads to a discrepancy between the simulation mesh and the simulation cache. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
+When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> (instead of the simulation object).</p>
 </dd>
 </dl>
 <h2 id="cloth-material-models">Cloth Material Models<a class="headerlink" href="#cloth-material-models" title="Permanent link">#</a></h2>
@@ -1002,14 +988,14 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <td>YES</td>
 </tr>
 <tr>
-<td>Can Collider With Other Simulation Object</td>
+<td>Can Collide With Other Simulation Object</td>
 <td>Can this simulation object collide with other simulation objects</td>
 <td></td>
 <td>YES</td>
 <td>YES</td>
 </tr>
 <tr>
-<td>Can Collider With Colliders</td>
+<td>Can Collide With Colliders</td>
 <td>Can this simulation object collide with kinematic colliders</td>
 <td></td>
 <td>YES</td>
@@ -1093,7 +1079,7 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <p class="admonition-title">Biased Triangulation</p>
 <p>Because HiPhyEngine requires all meshes to be triangulated, the regularity of the triangulation will creates a preferred bending direction on the material. Increasing resolution of the mesh, and randomize the triangulation can mitigate such artifacts.</p>
 </div>
-<p>You can find a more complex example of an animated hand taking off a glove <a href="../../demos/glove-demo.blend">here</a>. This example shows how user can use soft collider for the hands and cloth object for the glove, and even though the animation contains self intersection, HiPhyEngine is able to resolve the collision and create an intersection free result for both hands and the glove.</p>
+<p>You can find a more complex example of an animated hand taking off a glove <a href="../../demos/glove-demo.blend">here</a>. This example shows how user can use soft collider for the hands and cloth object for the glove, and even though the animation contains self intersection, <strong>HiPhyEngine</strong> is able to resolve the collision and create an intersection free result for both hands and the glove.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/glove-demo-1.png" data-desc-position="bottom"><img alt="Glove Demo" src="../../images/material-models/glove-demo-1.png" width="300"></a>
 </figure>
@@ -1105,6 +1091,13 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </figure>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/glove-demo-4.png" data-desc-position="bottom"><img alt="Glove Demo" src="../../images/material-models/glove-demo-4.png" width="300"></a>
+</figure>
+<p>The last <a href="../../demos/cloth-twist-demo.blend">example</a> showcases a twisted cloth, and how <strong>HiPhyEngine</strong> handles layered contact. Note that for complex layered collisions, low frictional value can cause jitters. User might need to increase friction to stabilize the simulation. In this example, the simulation is stable for friction of value <span class="arithmatex">\(1\)</span>.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/cloth-twist-demo-1.png" data-desc-position="bottom"><img alt="Cloth Twist Demo" src="../../images/material-models/cloth-twist-demo-1.png" width="300"></a>
+</figure>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/cloth-twist-demo-2.png" data-desc-position="bottom"><img alt="Cloth Twist Demo" src="../../images/material-models/cloth-twist-demo-2.png" width="300"></a>
 </figure>
 
 

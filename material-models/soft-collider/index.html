@@ -134,7 +134,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_3" hidden>
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -142,19 +142,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_3">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -784,7 +774,7 @@
 
 
 <h1 id="soft-collider">Soft Collider<a class="headerlink" href="#soft-collider" title="Permanent link">#</a></h1>
-<p>Collision objects coming from animation usually will contain self intersection and cause issues for simulations. Soft collider is the material model designed for de-intersecting the collision objects. Soft collider has carries no momentum, therefore will create no secondary motions. Soft colliders in Blender must be <strong>triangulated</strong> meshes.</p>
+<p>Collision objects coming from animation usually will contain self intersection and cause issues for simulations. <strong>Soft collider</strong> is the material model designed for de-intersecting the collision objects while maintaining the silhouette as much as possible. <strong>Soft collider</strong> has carries no momentum, therefore will create no secondary motions. Soft colliders in Blender must be <strong>triangulated</strong> meshes.</p>
 <dl>
 <dt><code>Solver</code></dt>
 <dd>
@@ -792,12 +782,12 @@
 </dd>
 <dt><code>Target Shape</code></dt>
 <dd>
-<p>During simulation, the <strong>Target Shape</strong> creates a force to pull the simulation object towards the <strong>Target Shape</strong>. It designed for achieving art directed shape. The strength of the pulling force is controlled <strong>Target Stiffness</strong> and <strong>Target Damping</strong> parameter. <strong>Target Shape</strong> needs to have the same number of vertices as the simulation object.</p>
+<p>During simulation, the <strong>Target Shape</strong> creates a force to pull the simulation object towards the <strong>Target Shape</strong>. It designed for achieving art directed shape during motion. The strength of the pulling force is controlled <strong>Target Stiffness</strong> and <strong>Target Damping</strong> parameter. <strong>Target Shape</strong> needs to have the same number of vertices as the simulation object.</p>
 </dd>
 <dt><code>Driven Shape</code></dt>
 <dd>
-<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point before any modifier is applied, while during export, all modifiers of the simulation object is applied. This means there should not have any modifiers that changes point position or topology on the simulation object. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
-When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> instead of the simulation object when simulation is finished.</p>
+<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point attribute before any modifier is applied. While during export, all modifiers of the simulation object is applied. This means that having any modifiers on the simulation object that changes point position or vertex count on the simulation object will leads to a discrepancy between the simulation mesh and the simulation cache. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
+When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> (instead of the simulation object).</p>
 </dd>
 </dl>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
@@ -827,14 +817,14 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <td>YES</td>
 </tr>
 <tr>
-<td>Can Collider With Other Simulation Object</td>
+<td>Can Collide With Other Simulation Object</td>
 <td>Can this simulation object collide with other simulation objects</td>
 <td></td>
 <td>YES</td>
 <td>YES</td>
 </tr>
 <tr>
-<td>Can Collider With Colliders</td>
+<td>Can Collide With Colliders</td>
 <td>Can this simulation object collide with kinematic colliders</td>
 <td></td>
 <td>YES</td>
@@ -878,8 +868,8 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title"><strong>Can Collider With Other Simulation Object/Colliders</strong></p>
-<p>For collision purposes, <strong>soft colliders</strong> are <strong>simulation objects</strong>, not <strong>kinematic colliders</strong>. To control collision with <strong>soft colliders</strong>, use the parameter <strong>Can Collider With Other Simulation Object</strong>.</p>
+<p class="admonition-title"><strong>Can Collide With Other Simulation Object/Colliders</strong></p>
+<p>For collision purposes, <strong>soft colliders</strong> are <strong>simulation objects</strong>, not <strong>kinematic colliders</strong>. To control collision with <strong>soft colliders</strong>, use the parameter <strong>Can Collide With Other Simulation Object</strong>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title"><strong>Goal Stiffness</strong></p>
@@ -909,7 +899,7 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </figure>
 <div class="admonition note">
 <p class="admonition-title">On volume perservation</p>
-<p>Soft collider does minimal local surface deformation. It is good at perserving siluette but provides no volume preservation. If user wish to have volume perservation, please use deformable body instead.</p>
+<p><strong>Soft collider</strong> does minimal local surface deformation. It is good at preserving siluette but provides no volume preservation. If user wish to have volume perservation, please use <strong>deformable body</strong> instead.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">On the number of <strong>substeps</strong></p>

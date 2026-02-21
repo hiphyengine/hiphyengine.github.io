@@ -134,7 +134,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_3" hidden>
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -142,19 +142,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_3">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -869,7 +859,7 @@
 
 <h1 id="hiphyengine-blender-quick-start">HiPhyEngine Blender Quick Start<a class="headerlink" href="#hiphyengine-blender-quick-start" title="Permanent link">#</a></h1>
 <h3 id="system-requirement">System Requirement<a class="headerlink" href="#system-requirement" title="Permanent link">#</a></h3>
-<p><strong>HiPhyEngine</strong> supports Windows and Linux. It requires an x64 CPU with AVX2 support. Any Intel/AMD CPU from last decade should be enough.</p>
+<p><strong>HiPhyEngine</strong> supports Windows and Linux. It requires an x64 CPU with AVX2 support. Any Intel/AMD CPU from last decade should be enough. <strong>HiPhyEngine</strong> requires installation of third party packages through pip.</p>
 <h3 id="install-addon">Install Addon<a class="headerlink" href="#install-addon" title="Permanent link">#</a></h3>
 <p><strong>HiPhyEngine</strong> can be installed through the add on menu(<span class="boxed-word">edit</span>-&gt;<span class="boxed-word">preferences</span>-&gt;<span class="boxed-word">Add-ons</span>)</p>
 <figure class="center-figure">
@@ -884,15 +874,15 @@
 </div>
 <h3 id="creating-your-first-simulation-setup">Creating Your First Simulation Setup<a class="headerlink" href="#creating-your-first-simulation-setup" title="Permanent link">#</a></h3>
 <p>In this section, we will show user how to set up a simple rigid body (<strong>affine body</strong>) simulation.</p>
-<p>After insallation, HiPhy panel should show in the physics menu in Blender.</p>
+<p>After insallation, HiPhy panel will show in the physics menu.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/quick-start/hiphy-panel.png" data-desc-position="bottom"><img alt="HiPhy Panel" src="../../images/quick-start/hiphy-panel.png" width="150"></a>
 </figure>
-<p>By checking <span class="boxed-word">Hi Phy</span>, it enables Hi Phy Engine on the selected obeject.</p>
+<p>By checking <span class="boxed-word">Hi Phy</span>, it enables <strong>HiPhyEngine</strong> on the selected object.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/quick-start/hiphy-panel-expand.png" data-desc-position="bottom"><img alt="HiPhy Panel" src="../../images/quick-start/hiphy-panel-expand.png" width="150"></a>
 </figure>
-<p>The panel lists the different supported materials for HiPhyEngine. For this tutorial, we will use the <span class="boxed-word">Lagrangian Solver</span>, <span class="boxed-word">Affine Body</span>, and <span class="boxed-word">Collider</span>.  </p>
+<p>The panel lists the different supported materials and nodes for <strong>HiPhyEngine</strong>. For this tutorial, we will use the <span class="boxed-word">Lagrangian Solver</span>, <span class="boxed-word">Affine Body</span>, and <span class="boxed-word">Collider</span>.</p>
 <h4 id="creating-affine-bodies">Creating Affine Bodies<a class="headerlink" href="#creating-affine-bodies" title="Permanent link">#</a></h4>
 <p>Create two cubes and places them above each other for some interesting collision.</p>
 <p>Enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel and select <span class="boxed-word">Affine Body</span> as the material model.</p>
@@ -909,20 +899,9 @@
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All meshes in HiPhyEngine simulation must be triangle meshes. To ensure maximum transparency, HiPhyEngine does not perform any internal triangulation, so the simulation mesh will always matches what is in the scene.</p>
+<p>All meshes in <strong>HiPhyEngine</strong> simulation must be triangle meshes. To ensure maximum transparency, <strong>HiPhyEngine</strong> does not perform any internal triangulation, so the simulation mesh will always matches what is in the scene.</p>
 </div>
-<h4 id="creating-a-collider">Creating A Collider<a class="headerlink" href="#creating-a-collider" title="Permanent link">#</a></h4>
-<p>Create a plane and scale it up and move it down.
-Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word">Collider</span>. Don't forget to triangulate it as well.</p>
-<figure class="center-figure">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/quick-start/floor.png" data-desc-position="bottom"><img alt="Floor" src="../../images/quick-start/floor.png" width="300"></a>
-</figure>
-<h4 id="creating-a-solver">Creating A Solver<a class="headerlink" href="#creating-a-solver" title="Permanent link">#</a></h4>
-<p>A solver node is in charge of gathering the information of all the simulation objects connected to the solver, running the simulation and maintaining the cache for simulation.</p>
-<p>Create an empty plane axis (or any invisible object you prefer). Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word">Lagrangian Solver</span>.</p>
-<h4 id="connect-objects-to-the-solver">Connect Objects To the Solver<a class="headerlink" href="#connect-objects-to-the-solver" title="Permanent link">#</a></h4>
-<p>The last thing you need to do, is to connect the simulation objects to the solver.</p>
-<p>In the <span class="boxed-word">Hi Phy</span> panel, assign the solver node to the <span class="boxed-word">Solver</span> property for the two affine bodies and the collider. Also change the <span class="boxed-word">Gravity</span> property on the affine bodies from [0, -980, 0] to [0, 0, -980].</p>
+<p>Also change the <span class="boxed-word">Gravity</span> property on the affine bodies from [0, -980, 0] to [0, 0, -980].</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/quick-start/simulation-setting.png" data-desc-position="bottom"><img alt="Floor" src="../../images/quick-start/simulation-setting.png" width="150"></a>
 </figure>
@@ -932,11 +911,26 @@ Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word
 </div>
 <div class="admonition note">
 <p class="admonition-title">Unit</p>
-<p>The unit of length in HiPhyEngine is <strong>cm</strong>. There is a <span class="boxed-word">Solver Scale</span> property in the solver node to convert units if the scene unit is not <strong>cm</strong>.</p>
+<p>The unit of length in <strong>HiPhyEngine</strong> is <strong>cm</strong>. There is a <span class="boxed-word">Solver Scale</span> property on the <a href="../../aux-nodes/solver/#solver-scale-and-model-unit">solver node</a> for convert units if the scene unit is not <strong>cm</strong>.</p>
 </div>
+<h4 id="creating-a-collider">Creating A Collider<a class="headerlink" href="#creating-a-collider" title="Permanent link">#</a></h4>
+<p>Create a plane and scale it up and move it below the cubes.
+Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word">Collider</span>. Don't forget to triangulate it as well.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/quick-start/floor.png" data-desc-position="bottom"><img alt="Floor" src="../../images/quick-start/floor.png" width="300"></a>
+</figure>
+<h4 id="creating-a-solver">Creating A Solver<a class="headerlink" href="#creating-a-solver" title="Permanent link">#</a></h4>
+<p>A solver node is in charge of gathering the information of all the simulation objects connected to the solver, running the simulation and maintaining the cache for simulation.</p>
+<p>Create an empty plane axis (or any invisible object you prefer). Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word">Lagrangian Solver</span>.</p>
+<h4 id="connect-objects-to-the-solver">Connect Objects To the Solver<a class="headerlink" href="#connect-objects-to-the-solver" title="Permanent link">#</a></h4>
+<p>The last thing you need to do, is to connect the simulation objects to the solver.</p>
+<p>In the <span class="boxed-word">Hi Phy</span> panel, assign the solver node to the <span class="boxed-word">Solver</span> property for the two affine bodies and the collider.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/quick-start/simulation-setting.png" data-desc-position="bottom"><img alt="Floor" src="../../images/quick-start/simulation-setting.png" width="150"></a>
+</figure>
 <h4 id="running-the-simulation">Running The Simulation<a class="headerlink" href="#running-the-simulation" title="Permanent link">#</a></h4>
 <p>Click the <span class="boxed-word">Run Sim</span> button on the solver node's <span class="boxed-word">Hi Phy</span> panel, the simulation will be kicked off asynchronously. You can see the progress of the simulation under the <span class="boxed-word">Run Sim</span> button.</p>
-<p>You can change the frames, and the simulation results will automatically update the mesh when the frames are available.</p>
+<p>You can change the frames on the timeline. The simulation meshes will be updated with frame change when the simulation frames are available.</p>
 <p>Congratulation on your first HiPhy simulation!</p>
 <p>You can find the reference file <a href="../../demos/quick-start.blend">here</a></p>
 

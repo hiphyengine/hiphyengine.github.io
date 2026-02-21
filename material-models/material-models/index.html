@@ -134,7 +134,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_3" hidden>
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -142,19 +142,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_3">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
       </label>
     
@@ -827,20 +817,20 @@
                   
 
 
-<h1 id="hiphyengine-material-models">HiPhyEngine Material Models<a class="headerlink" href="#hiphyengine-material-models" title="Permanent link">#</a></h1>
-<p>HiPhyEngine supports full coupling of multiple different material models. Picking the right material model for the right phenomenal is crucial to get a stable simulation result that fits your expectation. For Lagrangian simulation, HiPhyEngine supports 6 different material models: Affine Body, Elastic Rod, Cloth, Deformable Body, Kinematic Collider, and Soft Collider.</p>
+<h1 id="hiphyengine-material-models"><strong>HiPhyEngine</strong> Material Models<a class="headerlink" href="#hiphyengine-material-models" title="Permanent link">#</a></h1>
+<p><strong>HiPhyEngine</strong> supports full coupling of multiple different material models. Picking the right material model for the right phenomenal is crucial to get a stable simulation result that fits your expectation. For Lagrangian simulation, <strong>HiPhyEngine</strong> supports 6 different material models: <strong>Affine Body</strong>, <strong>Elastic Rod</strong>, <strong>Cloth</strong>, <strong>Deformable Body</strong>, <strong>Kinematic Collider</strong>, and <strong>Soft Collider</strong>.</p>
 <h2 id="affine-body">Affine Body<a class="headerlink" href="#affine-body" title="Permanent link">#</a></h2>
-<p>Affine Body in HiPhyEngine is an implementation of the work by <a href="https://arxiv.org/abs/2201.10022">Lan et. al.</a>. It is designed for simulating very stiff objects and holds many advantages over rigid bodies. For the purpose of the simulation setup, they can be treated as the material models for rigid objects.</p>
+<p><strong>Affine Body</strong> in <strong>HiPhyEngine</strong> is an implementation of the work by <a href="https://arxiv.org/abs/2201.10022">Lan et. al.</a>. It is designed for simulating very stiff objects while holding many advantages over rigid bodies mathematically. For the purpose of the simulation setup, they can be treated as the material models for rigid objects.</p>
 <h2 id="elastic-rod">Elastic Rod<a class="headerlink" href="#elastic-rod" title="Permanent link">#</a></h2>
-<p>Elastic Rod in HiPhyEngine is an implementation of the work by <a href="https://www.cs.columbia.edu/cg/threads/">Bergou et. al.</a>. Different from a traditional spring-based system, a single elastic rod can resist twist and bend, which makes them ideal for simulation hair (especially curls) and other type of thin threads that have a innate curvy structure that needs to be maintained in simulation.</p>
+<p><strong>Elastic Rod</strong> in <strong>HiPhyEngine</strong> is an implementation of the work by <a href="https://www.cs.columbia.edu/cg/threads/">Bergou et. al.</a>. Different from a traditional spring-based system, a single elastic rod can resist twist and bend, which makes them ideal for simulation hair (especially curls) and other type of thin threads that have a innate curvy structure that needs to be maintained in simulation.</p>
 <h2 id="cloth">Cloth<a class="headerlink" href="#cloth" title="Permanent link">#</a></h2>
-<p>Cloth in HiPhyEngine is an implementation of the work by <a href="https://www.cs.cmu.edu/~baraff/papers/sig98.pdf">Baraff et. al.</a> and <a href="https://mmacklin.com/neohookean.pdf">Macklin et. al.</a>. It can be used to simulate soft fabric materials.</p>
+<p><strong>Cloth</strong> in <strong>HiPhyEngine</strong> is an implementation of the work by <a href="https://www.cs.cmu.edu/~baraff/papers/sig98.pdf">Baraff et. al.</a> and <a href="https://mmacklin.com/neohookean.pdf">Macklin et. al.</a>. It can be used to simulate soft fabric materials.</p>
 <h2 id="deformable-bodies">Deformable Bodies<a class="headerlink" href="#deformable-bodies" title="Permanent link">#</a></h2>
-<p>Deformable Body in HiPhyEngine is an implementation of the work by <a href="https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf">McAdams et. al.</a> and <a href="https://graphics.pixar.com/library/StableElasticity/">Smith et. al.</a>. The stable Neo-Hookean material model, with a multigrid solver. It can be used for soft 3D objects like elastic balls, or muscle and body to create secondary motions.</p>
+<p><strong>Deformable Body</strong> in <strong>HiPhyEngine</strong> is an implementation of the work by <a href="https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf">McAdams et. al.</a> and <a href="https://graphics.pixar.com/library/StableElasticity/">Smith et. al.</a>. It simulates the stable Neo-Hookean material model, with a multigrid solver. It can be used for soft 3D objects like elastic objects, muscles, and soft tissues for volume conservation and create secondary motions.</p>
 <h2 id="kinematic-collider">Kinematic Collider<a class="headerlink" href="#kinematic-collider" title="Permanent link">#</a></h2>
-<p>Kinematic Colliders are standard collision objects. They are directly taken from the animation, the simulator will use them as collision objects for simulated materials, without simulate the kinematic colliders.</p>
+<p><strong>Kinematic Colliders</strong> are standard collision objects. They are directly taken from the animation, the simulator will not deform them.</p>
 <h2 id="soft-collider">Soft Collider<a class="headerlink" href="#soft-collider" title="Permanent link">#</a></h2>
-<p>In the case of animation, it rarely creates intersection free input for simulations. Without modifications, those collision objects will leads to failed simulation as HiPhyEngine not only guarantees but requires (unless collision is turned off) to be intersection free. Soft colliders are designed to resolve self intersection in colliders from animation input. In contrast to cloth or deformable body, soft collider has carries no momentum, so there will be no jiggle secondary motion, only intersection resolution. </p>
+<p>With animation, it is extremely difficult to create intersection free input for simulations. Without modifications, those collision objects can lead to failed simulation because there is no intersection free solution. <strong>HiPhyEngine</strong> not only guarantees but requires (unless collision is turned off) the simulation meshes and colliders to be intersection free. <strong>Soft colliders</strong> are designed to resolve self intersection in colliders from animation input with minimal changes to the silhouette. In contrast to <strong>cloth</strong> or <strong>deformable body</strong>, <strong>soft collider</strong> has carries no momentum. There is be no secondary motion, volume preservation, only intersection resolution for <strong>soft colliders</strong>.</p>
 
 
 
