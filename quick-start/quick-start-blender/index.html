@@ -754,6 +754,128 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -859,7 +981,7 @@
 
 <h1 id="hiphyengine-blender-quick-start">HiPhyEngine Blender Quick Start<a class="headerlink" href="#hiphyengine-blender-quick-start" title="Permanent link">#</a></h1>
 <h3 id="system-requirement">System Requirement<a class="headerlink" href="#system-requirement" title="Permanent link">#</a></h3>
-<p><strong>HiPhyEngine</strong> supports Windows and Linux. It requires an x64 CPU with AVX2 support. Any Intel/AMD CPU from last decade should be enough. <strong>HiPhyEngine</strong> requires installation of third party packages through pip.</p>
+<p><strong>HiPhyEngine</strong> supports Windows and Linux. It requires an x64 CPU with AVX2 support. Any Intel/AMD CPU from last decade should be enough.</p>
 <h3 id="install-addon">Install Addon<a class="headerlink" href="#install-addon" title="Permanent link">#</a></h3>
 <p><strong>HiPhyEngine</strong> can be installed through the add on menu(<span class="boxed-word">edit</span>-&gt;<span class="boxed-word">preferences</span>-&gt;<span class="boxed-word">Add-ons</span>)</p>
 <figure class="center-figure">
@@ -901,7 +1023,7 @@
 <p class="admonition-title">Note</p>
 <p>All meshes in <strong>HiPhyEngine</strong> simulation must be triangle meshes. To ensure maximum transparency, <strong>HiPhyEngine</strong> does not perform any internal triangulation, so the simulation mesh will always matches what is in the scene.</p>
 </div>
-<p>Also change the <span class="boxed-word">Gravity</span> property on the affine bodies from [0, -980, 0] to [0, 0, -980].</p>
+<p>Also change the <span class="boxed-word">Gravity</span> property on the <strong>affine bodies</strong> from [0, -980, 0] to [0, 0, -980].</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/quick-start/simulation-setting.png" data-desc-position="bottom"><img alt="Floor" src="../../images/quick-start/simulation-setting.png" width="150"></a>
 </figure>
@@ -924,7 +1046,7 @@ Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word
 <p>Create an empty plane axis (or any invisible object you prefer). Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word">Lagrangian Solver</span>.</p>
 <h4 id="connect-objects-to-the-solver">Connect Objects To the Solver<a class="headerlink" href="#connect-objects-to-the-solver" title="Permanent link">#</a></h4>
 <p>The last thing you need to do, is to connect the simulation objects to the solver.</p>
-<p>In the <span class="boxed-word">Hi Phy</span> panel, assign the solver node to the <span class="boxed-word">Solver</span> property for the two affine bodies and the collider.</p>
+<p>In the <span class="boxed-word">Hi Phy</span> panel, assign the solver node to the <span class="boxed-word">Solver</span> property for the two <strong>affine bodies</strong> and the <strong>collider</strong>.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/quick-start/simulation-setting.png" data-desc-position="bottom"><img alt="Floor" src="../../images/quick-start/simulation-setting.png" width="150"></a>
 </figure>
@@ -954,7 +1076,7 @@ Enable <span class="boxed-word">Hi Phy</span> and select <span class="boxed-word
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   

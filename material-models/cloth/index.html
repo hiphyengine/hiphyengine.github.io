@@ -726,6 +726,128 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -823,7 +945,7 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </dd>
 </dl>
 <h2 id="cloth-material-models">Cloth Material Models<a class="headerlink" href="#cloth-material-models" title="Permanent link">#</a></h2>
-<p>Cloth objects can be one of two different type of materials, uv panel <a href="https://www.cs.cmu.edu/~baraff/papers/sig98.pdf">Baraff et. al.</a> or elastic membrane <a href="https://mmacklin.com/neohookean.pdf">Macklin et. al.</a></p>
+<p><strong>Cloth</strong> objects can be one of two different type of materials, uv panel <a href="https://www.cs.cmu.edu/~baraff/papers/sig98.pdf">Baraff et. al.</a> or elastic membrane <a href="https://mmacklin.com/neohookean.pdf">Macklin et. al.</a></p>
 <h3 id="uv-panel">UV panel<a class="headerlink" href="#uv-panel" title="Permanent link">#</a></h3>
 <p>UV panel material follows the tailor style workflow. User can create cloth 2D patches, and use constraints to stitch the cloth patches together. In such case, the cloth rest shape is defined in 2D using UV parameters stored in <strong>hi_phy_cloth_uv</strong> attribute.</p>
 <p>In Blender, we provided a <span class="boxed-word">Convert UV</span> button on the cloth object panel to convert the blender UV attribute to <strong>hi_phy_cloth_uv</strong> attribute. However, the <strong>cloth uv</strong> attribute is not 0 - 1 as the UV texture coordinate, but rather should be the physical coordinate of the cloth panel when lay flat on the UV plane. User can use addons such <a href="https://extensions.blender.org/add-ons/magic-uv/">Magic UV</a> to create a UV coordinate that matches the UV scale of cloth panels.</p>
@@ -914,15 +1036,15 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </thead>
 <tbody>
 <tr>
-<td>Mu <span class="arithmatex">\(\mu\)</span></td>
-<td>The first Lamé  parameter, shear modulus, <span class="arithmatex">\(\mu\)</span>. It roughly corresponding to resistance to the shearing motion</td>
+<td>Lambda <span class="arithmatex">\(\lambda\)</span></td>
+<td>The first Lamé  parameter, <span class="arithmatex">\(\lambda\)</span>. It roughly corresponding to volume preservation</td>
 <td><span class="arithmatex">\(g/s^2\)</span></td>
 <td>YES</td>
 <td>YES</td>
 </tr>
 <tr>
-<td>Lambda <span class="arithmatex">\(\lambda\)</span></td>
-<td>The second Lamé  parameter, shear modulus, <span class="arithmatex">\(\mu\)</span>. It roughly corresponding to volume preservation</td>
+<td>Mu <span class="arithmatex">\(\mu\)</span></td>
+<td>The second Lamé  parameter, shear modulus, <span class="arithmatex">\(\mu\)</span>. It roughly corresponding to resistance to the shearing motion</td>
 <td><span class="arithmatex">\(g/s^2\)</span></td>
 <td>YES</td>
 <td>YES</td>
@@ -1120,7 +1242,7 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   

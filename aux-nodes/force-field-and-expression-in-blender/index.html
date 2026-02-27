@@ -9,6 +9,8 @@
         <link rel="prev" href="../constraints-in-blender/">
       
       
+        <link rel="next" href="../../get-hiphy/download/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
@@ -696,6 +698,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#force-field-shadowing" class="md-nav__link">
+    Force Field Shadowing
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -712,6 +721,128 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -772,6 +903,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#force-field-shadowing" class="md-nav__link">
+    Force Field Shadowing
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -800,10 +938,10 @@
 
 
 <h1 id="force-field-and-expression-in-blender">Force Field and Expression in Blender<a class="headerlink" href="#force-field-and-expression-in-blender" title="Permanent link">#</a></h1>
-<p>HiPhyEngine supports force field and expression to enable user to procedually create maps and external forces. The expression language used is <a href="https://github.com/wdas/SeExpr">SeExpr2</a>. Expression language provide an simple way for artists to programmably create a per-point value for simulation.</p>
+<p><strong>HiPhyEngine</strong> supports force fields and expressions to enable user to procedually create maps and external forces. The expression language used is <a href="https://github.com/wdas/SeExpr">SeExpr2</a>. Expression language provide an simple way for artists to programmably create a per-point value attributes for simulation.</p>
 <h2 id="force-field">Force Field<a class="headerlink" href="#force-field" title="Permanent link">#</a></h2>
 <p>For visualization purposes, <strong>force field</strong> objects must be a <strong>mesh</strong> objects. In the examples, we used a plane as the force field object.
-Enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel and select <span class="boxed-word">Force Field</span>, it will make the object a force field object for HiPhyEngine.</p>
+Enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel and select <span class="boxed-word">Force Field</span>, it will make the object a force field object for <strong>HiPhyEngine</strong>.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/force-field-ui.png" data-desc-position="bottom"><img alt="Force Field UI" src="../../images/aux-nodes/force-field-ui.png" width="150"></a>
 </figure>
@@ -821,9 +959,9 @@ Enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Ph
 </div>
 <div class="admonition note">
 <p class="admonition-title">The unit of the force field</p>
-<p>Dispite of the name, the unit for <strong>force field</strong> is <span class="arithmatex">\(10\mu N/cm^2\)</span> (presure) for mesh objects (<strong>affine body</strong>, <strong>cloth</strong>, and <strong>deformable body</strong>), <span class="arithmatex">\(10\mu N/cm\)</span> for curve objects (elastic rod). It is so that the force field's influence is resolution independent.</p>
+<p>Dispite of the name, the unit for <strong>force field</strong> is <span class="arithmatex">\(10\mu N/cm^2\)</span> (presure) for mesh objects (<strong>affine body</strong>, <strong>cloth</strong>, and <strong>deformable body</strong>), <span class="arithmatex">\(10\mu N/cm\)</span> for curve objects (<strong>elastic rod</strong>). It is so that the force field's influence is resolution independent.</p>
 </div>
-<p>The <strong>applies to</strong> parameter is a list of all objects that the force field influences. For each object, user can apply a different weight. Please make sure the simulation object is in the same solver as the force field.</p>
+<p>The <strong>applies to</strong> parameter is a list of all objects that the force field influences. For each object, user can apply a different weight. Please make sure the simulation object is in the same solver as the force field. <strong>Force field</strong> has infinite ranges, the visualization range does not represent the range of the force field.</p>
 <h3 id="visualization-parameters">Visualization Parameters<a class="headerlink" href="#visualization-parameters" title="Permanent link">#</a></h3>
 <p>To visualize the <strong>force field</strong>, user can use the visualization parameters, set a range and number of slice. Click <span class="boxed-word">Update Visualization Mesh</span> to update the <strong>force field</strong> mesh. When <span class="boxed-word">Live Update</span> is checked, the visualization mesh will also automatically update with the change of frame.</p>
 <figure class="center-figure">
@@ -833,16 +971,36 @@ Enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Ph
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/force-field-demo-1.png" data-desc-position="bottom"><img alt="Force Field Demo" src="../../images/aux-nodes/force-field-demo-1.png" width="300"></a>
 </figure>
+<h3 id="force-field-shadowing">Force Field Shadowing<a class="headerlink" href="#force-field-shadowing" title="Permanent link">#</a></h3>
+<p>In real world, external forces such as wind will be blocked if there is an another object in front. This effect is emulated using the <strong>shadowing</strong> effect. It can be imagining that each object will cast a shadow that blocks the external force to reach the simulation object. The shadowing effect is calculated by casting a ray from the point at which the external force is applied. The ray is back traced until it hits a simulation object or collision object. The distance of the ray is controlled by <strong>Shadow Distance Simulation Object</strong> and <strong>Shadow Distance Collision Object</strong> correspondingly. If the ray is a hit, <strong>Shadow Effect Simulation Object</strong> and <strong>Shadow Effect Collision Object</strong> will be used to reduce the force field. 1 means the whole force will be blocked, 0 means the no force will be blocked. If there are both collision object and simulation object are within the respected <strong>Shadow Distance</strong>, the closest object's type to the ray original point will be used to compute the <strong>Shadow Effect</strong> value.</p>
+<p>All shadowing effect parameters are mappable and animatable. <strong>Shadow Distance</strong> and <strong>Shadow Effect</strong> is computed based on the value for the point at which the force is applied, not the point at which the shadow ray is hit.</p>
+<div class="admonition note">
+<p class="admonition-title">Soft Collider</p>
+<p>Soft collider is considered as simulation object for shadowing, not collision object.</p>
+</div>
+<p>You can find the an example file for force field shadowing <a href="../../demos/force-shadowing-demo.blend">here</a>. Use can see how the cloth behind been affected by the force field when coming in/out of the shadows of the front object.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/force-shadow-demo.png" data-desc-position="bottom"><img alt="Shadow" src="../../images/aux-nodes/force-shadow-demo.png" width="300"></a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Per Force Field Control, and Shadow Casting Control</p>
+<p>We current do not provide a way to control shadowing per force field, or control if an object cast shadow or not. The combination of different force fields and simulation objects can get out of control very quickly. We are open to suggestions for good ways to provide those controls to the user.</p>
+</div>
 <h2 id="expression-attributes">Expression Attributes<a class="headerlink" href="#expression-attributes" title="Permanent link">#</a></h2>
-<p>HiPhyEngine supports using per point attribute for the <a href="../property-map-in-blender/">mappable properties</a>. User can use tools in Blender to create and animate the attributes. We also provide a tool for user to create point attributes using SeExpr expressions.</p>
+<p><strong>HiPhyEngine</strong> supports using per point attribute for the <a href="../property-map-in-blender/">mappable properties</a>. User can use tools in Blender, such as geometry nodes to create and animate the attributes. <strong>HiPhyEngine</strong> also provide a tool for user to create point attributes using SeExpr2 expressions.</p>
 <p>To create <strong>expression attribute</strong>, enable <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel. Creating <strong>expression attribute</strong> does <strong>not</strong> require the object to be a HiPhy simulation object.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/expression-property.png" data-desc-position="bottom"><img alt="Expression Property" src="../../images/aux-nodes/expression-property.png" width="300"></a>
 </figure>
 <p>User can create any number of <strong>expression attributes</strong>, by adding them to the list. HiPhyEngine will automatically parse the expression and create the attribute with the proper type.
-The <strong>expression attribute</strong> currently supports <strong>$P</strong>, <strong>$t</strong>, <strong>$u</strong>, <strong>$v</strong> and <strong>$time</strong> (time) variables. <strong>$P</strong> is evaluated as the <strong>position</strong> attribute, <strong>$t</strong> is evaluated as the <strong>hi_phy_parameterization</strong> attribute, <strong>$u</strong> is evaluated as the <strong>hi_phy_u</strong> attribute, <strong>$v</strong> is evaluated as the <strong>hi_phy_v</strong> attribute, <strong>$time</strong> is the current scene time.
-In addition to the parameters above, we provides three float and three vector attributes as arbitrary inputs. The three float attributes are <strong>$v1</strong>, <strong>$v2</strong>, and <strong>$v3</strong>. They are evaluated as <strong>hi_phy_v1</strong>, <strong>hi_phy_v2</strong>, and <strong>hi_phy_v3</strong>. The three vector attributes are <strong>$vv1</strong>, <strong>$vv2</strong>, and <strong>$vv3</strong>. They are evaluated as <strong>hi_phy_vv1</strong>, <strong>hi_phy_vv2</strong>, and <strong>hi_phy_vv3</strong>.
-<strong>All the attributes must be per-vertex (point domain)</strong>.</p>
+The <strong>expression attribute</strong> currently supports <strong>$P</strong>, <strong>$t</strong>, <strong>$u</strong>, <strong>$v</strong> and <strong>$time</strong> variables.</p>
+<p><strong>$P</strong> is evaluated as the <strong>position</strong> attribute.</p>
+<p><strong>$t</strong> is evaluated as the <strong>hi_phy_parameterization</strong> attribute.</p>
+<p><strong>$u</strong> is evaluated as the <strong>hi_phy_u</strong> attribute.</p>
+<p><strong>$v</strong> is evaluated as the <strong>hi_phy_v</strong> attribute.</p>
+<p><strong>$time</strong> is the current scene time.</p>
+<p>In addition to the parameters above, we provides three float and three vector attributes as arbitrary inputs. The three float attributes are <strong>$v1</strong>, <strong>$v2</strong>, and <strong>$v3</strong>. They are evaluated as <strong>hi_phy_v1</strong>, <strong>hi_phy_v2</strong>, and <strong>hi_phy_v3</strong>. The three vector attributes are <strong>$vv1</strong>, <strong>$vv2</strong>, and <strong>$vv3</strong>. They are evaluated as <strong>hi_phy_vv1</strong>, <strong>hi_phy_vv2</strong>, and <strong>hi_phy_vv3</strong>.</p>
+<p><strong>All the attributes must be per-vertex (point domain)</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title"><strong>$u</strong> and <strong>$v</strong></p>
 <p><strong>$u</strong> is evaluated as the <strong>hi_phy_u</strong> attribute, <strong>$v</strong> is evaluated as the <strong>hi_phy_v</strong> attribute. Not the <strong>hi_phy_cloth_uv</strong> attribute. This is intented to decouple the cloth material parameterization from the expression parameter, to give user more control over the expressions.</p>
@@ -878,7 +1036,7 @@ In addition to the parameters above, we provides three float and three vector at
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   

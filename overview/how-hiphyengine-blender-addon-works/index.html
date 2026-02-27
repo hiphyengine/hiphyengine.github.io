@@ -713,6 +713,128 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -781,7 +903,7 @@
 <p>When a simulation is kicked off <strong>HiPhyEngine</strong> solver will go through the timeline one frame at a time and export all relevant scene objects. This process will use the final evaluated object from the editor, so only modifiers visible in the editor will be picked up.</p>
 <h2 id="simulation-deformation">Simulation Deformation<a class="headerlink" href="#simulation-deformation" title="Permanent link">#</a></h2>
 <p>When bringing back the result of the simulation, due to the limitation of Blender's Python API, <strong>HiPhyEngine</strong> can not deform the simulation object at the end of the modifier chain. The deformation of the position attribute from the simulator will be applied at the start of the modifier chain. It means that any modifier that changes the position or topology of the simulation object will cause issues.</p>
-<p>Therefore, simulation objects for <strong>HiPhyEngine</strong> needs to have a minimal modifier chain (<strong>triangulate</strong> is one of the few modifiers that is ok to use). If you wish to apply modifier chains after the simulator, you need to create a second object, and use the simulation object to deform the second object, and apply your desired modifier chain on the second object after the deform modifier. The <a href="../material-models/affine-body/#related-objects"><strong>Driven shape</strong></a> is designed circumvent such limitation.</p>
+<p>Therefore, simulation objects for <strong>HiPhyEngine</strong> needs to have a minimal modifier chain (<strong>triangulate</strong> is one of the few modifiers that is ok to use). If you wish to apply modifier chains after the simulator, you need to create a second object, and use the simulation object to deform the second object, and apply your desired modifier chain on the second object after the deform modifier. The <a href="../../material-models/affine-body/#related-objects"><strong>Driven shape</strong></a> is designed circumvent such limitation.</p>
 <h2 id="simulation-cache-management">Simulation Cache Management<a class="headerlink" href="#simulation-cache-management" title="Permanent link">#</a></h2>
 <p>Due to the potential large size of the simulation cache, we decided not to automatically save the cache whenever blender is saved to prevent frequent slowdowns and disk i/o during saves for large scale simulations. User will have to manually save/load the cache use the provided button on the <strong>solver node</strong> and operator calls. It also leaves the potential for users to create scripts to version-manage simulation caches, without worrying that the <strong>HiPhyEngine</strong> automatically overrides the simulation cache files when saving the Blender file.</p>
 
@@ -805,7 +927,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   

@@ -719,6 +719,128 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -788,7 +910,7 @@
 
 
 <h1 id="deformable-body">Deformable Body<a class="headerlink" href="#deformable-body" title="Permanent link">#</a></h1>
-<p>Deformable body is the material model for simulating elastic volumetric objects. Deformable body objects in Blender must be <strong>closed triangulated</strong> meshes. </p>
+<p><strong>Deformable body</strong> is the material model for simulating elastic volumetric objects. <strong>Deformable body</strong> objects in Blender must be <strong>closed triangulated</strong> meshes. </p>
 <dl>
 <dt><code>Solver</code></dt>
 <dd>
@@ -891,15 +1013,15 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <td>YES</td>
 </tr>
 <tr>
-<td>Mu <span class="arithmatex">\(\mu\)</span></td>
-<td>The first Lamé  parameter, shear modulus, <span class="arithmatex">\(\mu\)</span>. It roughly corresponding to resistance to the shearing motion</td>
+<td>Lambda <span class="arithmatex">\(\lambda\)</span></td>
+<td>The first Lamé  parameter, <span class="arithmatex">\(\lambda\)</span>. It roughly corresponding to area preservation</td>
 <td><span class="arithmatex">\(Pa = g/cm/s^2\)</span></td>
 <td>YES</td>
 <td>YES</td>
 </tr>
 <tr>
-<td>Lambda <span class="arithmatex">\(\lambda\)</span></td>
-<td>The second Lamé  parameter, shear modulus, <span class="arithmatex">\(\mu\)</span>. It roughly corresponding to area preservation</td>
+<td>Mu <span class="arithmatex">\(\mu\)</span></td>
+<td>The second Lamé  parameter, shear modulus, <span class="arithmatex">\(\mu\)</span>. It roughly corresponding to resistance to the shearing motion</td>
 <td><span class="arithmatex">\(Pa = g/cm/s^2\)</span></td>
 <td>YES</td>
 <td>YES</td>
@@ -925,7 +1047,7 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <p>Mesh bone parameters (<strong>Mesh Bone Stiffness</strong> and <strong>Mesh Bone Damping</strong>) are mappable. However, given <strong>mesh bone</strong> may be have different number of vertices as the <strong>simulation mesh</strong>, the maps (attributes) will live on the <strong>mesh bone</strong> instead of the <strong>simulation mesh</strong>. You can find an example of this map set up <a href="../../demos/deformable-body-bone-demo-with-map.blend">here</a>. User can find more on maps in the <a href="../../aux-nodes/property-map-in-blender/">property map section</a>.</p>
 </div>
 <h3 id="grid-embedding">Grid Embedding<a class="headerlink" href="#grid-embedding" title="Permanent link">#</a></h3>
-<p>Deformable Body in <strong>HiPhyEngine</strong> is an implementation of the work by <a href="https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf">McAdams et. al.</a>. It embeds the simulation in a hidden 3D grid. All deformable bodies share the same grid. Therefore the parameters related to the grid reside on the <strong>solver</strong> node.</p>
+<p><strong>Deformable Body</strong> in <strong>HiPhyEngine</strong> is an implementation of the work by <a href="https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf">McAdams et. al.</a>. It embeds the simulation in a hidden 3D grid. All deformable bodies share the same grid. Therefore the parameters related to the grid reside on the <strong>solver</strong> node.</p>
 <p>In the solver node, user can choose between the <strong>corotated linear elastic</strong> and <strong>stable NeoHookean</strong> model. <strong>corotated linear elastic</strong> is faster, but will suffer more volume loss with larger deformation. <strong>stable NeoHookean</strong> can handle large deformation better, but is slower. They share the same elastic parameters, and the material model attribute can be keyed and animated if needed.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/deformable-body-material-models.png" data-desc-position="bottom"><img alt="Deformable Body" src="../../images/material-models/deformable-body-material-models.png" width="300"></a>
@@ -934,8 +1056,8 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <p class="admonition-title">Grid Resolution</p>
 <p>Higher grid resolution will have a significant impact on the simulation performance. However, large grid size may lead to undesirable artifacts. For instance, if two mesh faces are rasterized in the same grid cell, the simulation will not be able to separate them. It will up to the user to try to see what resolution best fit each scene. For a general humanoid character, <span class="arithmatex">\(1cm\)</span> cell size is a good start. However, it is worth noting that the <strong>grid cell size</strong> parameter is in <strong>model</strong> unit. It is intended for ease of measurement. If your character is about 100 units in the scene, and you set the grid cell size as 1, the resolution of the simulation grid of will be about 100. Please see the <a href="../../aux-nodes/solver/">solver</a> for more details on <strong>model unit</strong>.</p>
 </div>
-<p>Furthermore, the HiPhyEngine uses a series of coarse to fine grid to speed up the simulation speed. The method is called the multigrid method. The performance of the multigrid of method deeply depends on the complexity of the mesh, if the mesh is regular such as round or cube shaped, the smallest grid can be 8x8x8 and the multigrid method can achieve very good performance, however, if the mesh has features such as thin limbs, the smallest grid size might need to be 16x16x16 or even 32x32x32 to capture those features. Once again, it will up to user to play with the setting to find the optimal solution for each scene. Luckily, even if the setting is not optimal, the simulator will still work, just it will take a bit longer to simulate. </p>
-<p>Here is the list of parameters on the <strong>solver</strong> that are related to the deformable body multigrid.</p>
+<p>Furthermore, the <strong>HiPhyEngine</strong> uses a series of coarse to fine grid to speed up the simulation speed. The method is called the multigrid method. The performance of the multigrid of method deeply depends on the complexity of the mesh, if the mesh is regular such as round or cube shaped, the smallest grid can be 8x8x8 and the multigrid method can achieve very good performance, however, if the mesh has features such as thin limbs, the smallest grid size might need to be 16x16x16 or even 32x32x32 to capture those features. Once again, it will up to user to play with the setting to find the optimal solution for each scene. Luckily, even if the setting is not optimal, the simulator will still work, just it will take a bit longer to simulate.</p>
+<p>Here is the list of parameters on the <strong>solver</strong> that are related to the <strong>deformable body</strong> multigrid.</p>
 <table>
 <thead>
 <tr>
@@ -988,10 +1110,6 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <p class="admonition-title">Smoother Damping and Iterations</p>
 <p>Those parameters are for more advanced users. For more details of the smoother, user can refer to the work by <a href="https://media.disneyanimation.com/uploads/production/publication_asset/18/asset/elasticSkinning.pdf">McAdams et. al.</a>. But in most cases, user can leave <strong>smoothing iteration damping</strong> as what it is. If the deformable body simulation takes a lot of iterations to solve the CG system, user can increase <strong>smoothing iteration</strong> and <strong>bottom smoothing iteration</strong> to see if improves the convergence. They are animatable parameter as well. So user can choose to add more iterations for frames with more motions, while reducing them for more static frames.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Multigrid Level</p>
-<p>To efficiently solve the elastic system, the multigrid method construct a hierarchy of grid each with half of the resolution of the previous level. The low resolution grid serves as a rough estimate for the fine level grid. If the simulation mesh is too complex, lower resolution will not be able to represent the mesh very well, and reduce the convergence rate. In practice, 16x16x16 or 32x32x32 for the lowest level resolution are good starting points, if user wish to tune the parameter for the best convergence behavior.</p>
-</div>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
 <p>You can find the an example file for deformable body simulation <a href="../../demos/deformable-body-demo.blend">here</a>.</p>
 <figure class="center-figure">
@@ -1032,7 +1150,7 @@ a version with a mapped <strong>mesh bone stiffness</strong> setup <a href="../.
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   

@@ -653,7 +653,7 @@
       
         <li class="md-nav__item">
   <a href="#subframe-interpolation" class="md-nav__link">
-    Subframe interpolation
+    Subframe Interpolation
   </a>
   
 </li>
@@ -661,6 +661,20 @@
         <li class="md-nav__item">
   <a href="#solver-tolerance-and-simulation-performance" class="md-nav__link">
     Solver Tolerance and Simulation Performance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elastic-grid-parameters" class="md-nav__link">
+    Elastic Grid Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preloading-parameters" class="md-nav__link">
+    Preloading Parameters
   </a>
   
 </li>
@@ -741,6 +755,128 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -804,7 +940,7 @@
       
         <li class="md-nav__item">
   <a href="#subframe-interpolation" class="md-nav__link">
-    Subframe interpolation
+    Subframe Interpolation
   </a>
   
 </li>
@@ -812,6 +948,20 @@
         <li class="md-nav__item">
   <a href="#solver-tolerance-and-simulation-performance" class="md-nav__link">
     Solver Tolerance and Simulation Performance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elastic-grid-parameters" class="md-nav__link">
+    Elastic Grid Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preloading-parameters" class="md-nav__link">
+    Preloading Parameters
   </a>
   
 </li>
@@ -832,24 +982,24 @@
 
 
 <h1 id="solver">Solver<a class="headerlink" href="#solver" title="Permanent link">#</a></h1>
-<p>Solver nodes manage all global simulation parameters, simulation states, and the simulation cache. HiPhyEngine allows multiple solvers in the same scene. Though HiPhyEngine allows full coupling of all different material models, for performance and artistic iterative workflow, when possible, it is still recommended to split out different materials (such as hair, cloth, and body of the same character).</p>
+<p><strong>Solver node</strong> manages all global simulation parameters, simulation states, and the simulation cache. <strong>HiPhyEngine</strong> allows multiple solvers in the same scene. Though <strong>HiPhyEngine</strong> allows full coupling of all different material models, for better performance and iterative workflow, unless coupling interaction is needed, it is still recommended to split out different materials (such as hair, cloth, and soft body of the same character).</p>
 <h2 id="solver-space">Solver Space<a class="headerlink" href="#solver-space" title="Permanent link">#</a></h2>
-<p>Solver node can be represented by any type of object. In the quick-start example, we used an empty axis object in Blender. Though the solver node is not rendered, the transformation of the solver node is still critical to the simulation. It defines the <strong>solver space</strong>. The <strong>solver space</strong>, is the object space of the solver node, it defines where the solver consider the origin, orientation, and scale is in the simulation.</p>
-<p>A common use of the <strong>solver space</strong> is for reducing numerical issues. For instance, if the shot is far from the origin (for instance, 1000s of units off), in such cases, the numerical effectiveness of the simulator will be significantly reduced, if the simulation runs in the world space. However, by moving the solver node to where the shot is, this numerical issue can be significantly mitigated.</p>
+<p><strong>Solver node</strong> can be represented by any type of object. In the <a href="../../quick-start/quick-start-blender/">quick-start</a> example, we used an empty axis object in Blender. Though the <strong>solver node</strong> is not rendered, the transformation of the <strong>solver node</strong> is still critical to the simulation. It defines the <strong>solver space</strong>. The <strong>solver space</strong>, is the object space of the <strong>solver node</strong>, it defines the origin, orientation, and scale of the simulation space.</p>
+<p>A common use of the <strong>solver space</strong> is for reducing numerical issues. For instance, if the shot is far from the origin (for instance, 1000s of units off), in such cases, the numerical effectiveness of the simulator will be significantly reduced, if the simulation runs in the world space. However, by moving the <strong>solver node</strong> to where the shot is, this numerical issue is mitigated.</p>
 <p>Another use of the <strong>solver space</strong> is to reduce motion introduced by animation using animated <strong>solver space</strong>. For instance, a character running or turning at a fast speed, to reduce or remove the motion introduced by such motion, user can make the solver node follow the animated character, this can remove/reduce the motion's effect on the simulation.</p>
 <div class="admonition note">
-<p class="admonition-title">Scaling the solver node</p>
-<p><strong>DO NOT</strong> introduce scaling on the solver node, especially non-uniform scaling. The simulator will accept it as input, but there is no guarantee all parameters will be scaled accordingly. If you wish to scale the simulation space, for instance, for the purpose of unit conversion, use the <strong>solver scale</strong> parameter.</p>
+<p class="admonition-title">Scaling the <strong>solver node</strong></p>
+<p><strong>DO NOT</strong> introduce scaling on the <strong>solver node</strong>, especially non-uniform scaling. The simulator will accept it as input, but there is no guarantee all parameters will be scaled accordingly. If you wish to scale the simulation space, for instance, for the purpose of unit conversion, use the <strong>solver scale</strong> parameter.</p>
 </div>
 <p>You can find an example of multi-solver set up, and moving <strong>solver space</strong> <a href="../../demos/solver-space-demo.blend">here</a>. In the example, you can see the moving <strong>solver space</strong> eliminated the effect of the moving point constraint. </p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/solver-space.png" data-desc-position="bottom"><img alt="Solver Space" src="../../images/aux-nodes/solver-space.png" width="300"></a>
 </figure>
 <h2 id="solver-scale-and-model-unit">Solver Scale, and Model Unit<a class="headerlink" href="#solver-scale-and-model-unit" title="Permanent link">#</a></h2>
-<p>The internal length unit of HiPhyEngine is <span class="arithmatex">\(cm\)</span>. Instead of requiring users to manually convert all parameters to <span class="arithmatex">\(cm\)</span>, HiPhyEngine provides a single parameter, <strong>solver scale</strong>, for unit conversion. For instance, if the scene is in <span class="arithmatex">\(inch\)</span>, user can set the <strong>solver scale</strong> to <span class="arithmatex">\(2.54\)</span>, then HiPhyEngine will internally scale up the scene by <span class="arithmatex">\(2.54\)</span>, effectively converts the units from <span class="arithmatex">\(inch\)</span> to <span class="arithmatex">\(cm\)</span>.</p>
-<p>Some parameters in HiPhyEngine is labeled as <strong>model unit</strong>s instead of standard <strong>cm</strong>. Those parameters will be scaled with <strong>solver scale</strong> internally. The reason for HiPhyEngine to use <strong>model unit</strong> instead of <strong>cm</strong> is to make it easier for user to measure those parameters in the scene. For instance, <strong>collision thickness/radius</strong> and <strong>deformable body grid size</strong> are measured in <strong>model unit</strong>.</p>
+<p>The internal length unit of <strong>HiPhyEngine</strong> is <span class="arithmatex">\(cm\)</span>. Instead of requiring users to manually convert all parameters to <span class="arithmatex">\(cm\)</span>, HiPhyEngine provides a single parameter, <strong>solver scale</strong>, for unit conversion. For instance, if the scene is in <span class="arithmatex">\(inch\)</span>, user can set the <strong>solver scale</strong> to <span class="arithmatex">\(2.54\)</span>, then HiPhyEngine will internally scale up the scene by <span class="arithmatex">\(2.54\)</span>, effectively converts the units from <span class="arithmatex">\(inch\)</span> to <span class="arithmatex">\(cm\)</span>.</p>
+<p>Some parameters in <strong>HiPhyEngine</strong> is labeled as <strong>model unit</strong>s instead of standard <strong>cm</strong>. Those parameters will be scaled with <strong>solver scale</strong> internally. The reason for HiPhyEngine to use <strong>model unit</strong> instead of <strong>cm</strong> is to make it easier for user to measure those parameters in the scene. For instance, <strong>collision thickness/radius</strong> and <strong>deformable body grid size</strong> are measured in <strong>model unit</strong>.</p>
 <h2 id="cache-management">Cache Management<a class="headerlink" href="#cache-management" title="Permanent link">#</a></h2>
-<p>Each solver node owns and manages their own simulation cache (Please make sure the <strong>caches</strong> are pointing to different directories). In Blender, user has to manually save/load the cache file. It is due to the limitation of python API, we can't get a call back from blender when it closes to automatically save a dirty cache. To minimizing confusion, we have decided to just let the user manually manage the cache files. HiPhyEngine cache save/load are registered Blender operators too, so user can also write simple scripts to manages the cache IO when there are multiple solver nodes.</p>
+<p>Each <strong>solver node</strong> owns and manages their own simulation cache files. In Blender, user has to manually save/load the cache file. Simulation cache can be rather big for large scenes. To prevent large load/save time, and to provide more flexibility, we decided to let the user manually manage the cache files. <strong>HiPhyEngine</strong> cache save/load are registered Blender operators, so user can also write simple scripts to manages the cache IO when there are multiple <strong>solver nodes</strong>, or even version control system for simulation caches.</p>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -865,7 +1015,7 @@
 </tr>
 </tbody>
 </table>
-<p>HiPhyEngine have to cache the whole simulation timeline and stores necessary intermediate data for simulation restarts. It can be very memory consuming, especially for volumetric simulations with deformable bodies. Unchecking the <strong>simulate in memory</strong> will allow the HiPhyEngine to offload unused data in the cache folder, and load them back in when requested.</p>
+<p><strong>HiPhyEngine</strong> have to cache the whole simulation timeline and stores necessary intermediate data for simulation restarts. It can be very memory consuming, especially for volumetric simulations with deformable bodies. Unchecking the <strong>simulate in memory</strong> will allow the <strong>HiPhyEngine</strong> to offload unused data in the cache folder, and load them back in when requested. The offloaded simulation cache files will share the same filename as the main cache file, but with the frame number appended to the file extension.</p>
 <table>
 <thead>
 <tr>
@@ -929,10 +1079,10 @@
 </table>
 <h2 id="number-of-subframes">Number of Subframes<a class="headerlink" href="#number-of-subframes" title="Permanent link">#</a></h2>
 <p>The default value for the number of subframes is <span class="arithmatex">\(10\)</span>. It is a very conservative setting that will create stable simulation in most cases. The number of subframes has the most drastic effect on the simulation time, user can choose to reduce the number of subframes to improve the simulation speed.</p>
-<h2 id="subframe-interpolation">Subframe interpolation<a class="headerlink" href="#subframe-interpolation" title="Permanent link">#</a></h2>
-<p>HiPhyEngine exports the simulation data at each frame, and linearly interpolate the subframes inside the simulator. HiPhyEngine currently does not support export subframe data from rig. If the animation input has a large rotation within a frame, HiPhyEngine will not be able to handle it properly, user will need to manually increase the frame rate for the scene, stretch out the frames and pass it into the simulator with corresponding frame rate (don't forget to reduce the number of subframes as well).</p>
+<h2 id="subframe-interpolation">Subframe Interpolation<a class="headerlink" href="#subframe-interpolation" title="Permanent link">#</a></h2>
+<p><strong>HiPhyEngine</strong> exports the simulation data at each frame, and linearly interpolate the subframes inside the simulator. <strong>HiPhyEngine</strong> currently does not support export subframe data from rig. If the animation input has a large rotation within a frame, <strong>HiPhyEngine</strong> will not be able to handle it properly, user will need to manually increase the frame rate for the scene, stretch out the frames and pass it into the simulator with corresponding frame rate (don't forget to reduce the number of subframes as well).</p>
 <h2 id="solver-tolerance-and-simulation-performance">Solver Tolerance and Simulation Performance<a class="headerlink" href="#solver-tolerance-and-simulation-performance" title="Permanent link">#</a></h2>
-<p>Lower the tolerance is, longer the simulation will need to run to achieve that. The default values are set as conservative. They will make sure the simulation will run through in the vast majority of the cases, however, they are also overly safe for most cases. If the simulation rig is too slow, those are the parameters need to be tuned. Smaller tolerance will run significantly faster, but might introduce jitters and other instabilities. Those tolerance are also <strong>animatable</strong>, so during shot work, user can selectively reduce the tolerance if they see instability in certain frames.</p>
+<p>Lower the tolerance is, longer the simulation will need to run to achieve that. The default values are set very conservatively. They will make sure the simulation will run through in the vast majority of the cases, however, they are also overly safe for most cases. If the simulation rig is too slow, those are the parameters need to be tuned. Smaller tolerance will run significantly faster, but might introduce jitters and other instabilities. Those tolerance are also <strong>animatable</strong>, so during shot work, user can selectively reduce the tolerance if they see instability in certain frames.</p>
 <p>An example output of the simulation might look like:</p>
 <div class="highlight"><pre><span></span><code>Newton iteration 0: 67.2891, step size: 1. CG iteration: 0
 Newton iteration 1: 6.89694, step size: 1. CG iteration: 9
@@ -944,8 +1094,10 @@ Newton iteration 6: 6.69312e-06, step size: 1. CG iteration: 9
 Newton iteration 7: 1.41424e-07, step size: 1. CG iteration: 10
 </code></pre></div>
 <p>User should see the Newton iteration goes down steadily. If the Newton iteration does not converge (i.e. reducing), user might need to reduce the CG tolerance.</p>
-<p>Please see <a href="../../material-models/deformable-body/#grid-embedding">deformable body</a> for the grid parameters.
-Please see <a href="../../material-models/elastic-rod/#preloading">elastic rod</a> for the preloading.</p>
+<h2 id="elastic-grid-parameters">Elastic Grid Parameters<a class="headerlink" href="#elastic-grid-parameters" title="Permanent link">#</a></h2>
+<p>Please see <a href="../../material-models/deformable-body/#grid-embedding">deformable body</a> for the grid parameters.</p>
+<h2 id="preloading-parameters">Preloading Parameters<a class="headerlink" href="#preloading-parameters" title="Permanent link">#</a></h2>
+<p>Please see <a href="../../material-models/elastic-rod/#preloading">elastic rod</a> for the preloading.</p>
 
 
 
@@ -967,7 +1119,7 @@ Please see <a href="../../material-models/elastic-rod/#preloading">elastic rod</
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   

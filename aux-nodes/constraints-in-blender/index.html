@@ -775,6 +775,128 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -900,9 +1022,9 @@
 
 
 <h1 id="constraints-in-blender">Constraints In Blender<a class="headerlink" href="#constraints-in-blender" title="Permanent link">#</a></h1>
-<p>HiPhyEngine provides multiple different constraint types. It provides both gui and python api for authoring the constraints as well.</p>
-<h2 id="point-constraint-and-mesh-constraints"><strong>Point Constraint</strong> and <strong>Mesh Constraints</strong><a class="headerlink" href="#point-constraint-and-mesh-constraints" title="Permanent link">#</a></h2>
-<p><strong>Point constraint</strong> and <strong>mesh constraints</strong> limit the movements of the choosen constraint points. <strong>Mesh constraint</strong> will deform and move with an associated mesh, while <strong>point constraint</strong> is composed of isolated points without any association to any mesh.</p>
+<p><strong>HiPhyEngine</strong> provides multiple different constraint types. It provides both gui and python api for authoring the constraints.</p>
+<h2 id="point-constraint-and-mesh-constraints">Point Constraint and Mesh Constraints<a class="headerlink" href="#point-constraint-and-mesh-constraints" title="Permanent link">#</a></h2>
+<p><strong>Point constraint</strong> and <strong>mesh constraint</strong> limit the movements of the choosen constraint points. <strong>Mesh constraint</strong> will deform and move with an associated mesh, while <strong>point constraint</strong> is composed of isolated points without any association to any mesh.</p>
 <p><strong>Point constraint</strong> can be created in both <span class="boxed-word">object mode</span> and <span class="boxed-word">edit mode</span> right click menu. While <strong>mesh constraint</strong> can be created in <span class="boxed-word">object mode</span> right click menu.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/right-click-menu-edit-mode.png" data-desc-position="bottom"><img alt="Right Click Menu" src="../../images/aux-nodes/right-click-menu-edit-mode.png" width="100"></a>
@@ -915,49 +1037,58 @@
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/point-constraint-select-points.png" data-desc-position="bottom"><img alt="Select Point Constraint" src="../../images/aux-nodes/point-constraint-select-points.png" width="300"></a>
 </figure>
 <p>The <strong>point constraint</strong> can be animated to move the constraint point. Example <a href="../../demos/point-constraint-demo.blend">here</a>.</p>
-<p>To create a <strong>mesh constraint</strong>, first select a <strong>triangulated</strong> constraint mesh, then select the simulation object that the user wishes to constraint. User may enters <span class="boxed-word">edit mode</span> select the points user wish to constraint or stay in <span class="boxed-word">object mode</span> to use the automatic closest point binding. <span class="boxed-word">right click</span>-&gt;<span class="boxed-word">Hi Phy Create Mesh Constraint</span>.</p>
-<p>In <span class="boxed-word">edit mode</span>, HiPhyEngine will automatically bind the selected point to the closest point on the constraint object.</p>
+<p>To create a <strong>mesh constraint</strong>, first select a <strong>triangulated</strong> constraint mesh, then select the simulation object that the user wishes to constraint. User may enters <span class="boxed-word">edit mode</span> select the points user wish to constraint or stay in <span class="boxed-word">object mode</span> to use the closest point binding. <span class="boxed-word">right click</span>-&gt;<span class="boxed-word">Hi Phy Create Mesh Constraint</span>.</p>
+<p>In <span class="boxed-word">edit mode</span>, <strong>HiPhyEngine</strong> will automatically bind the selected point to the closest point on the constraint object.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/mesh-constraint-edit-mode.png" data-desc-position="bottom"><img alt="Select Point Constraint" src="../../images/aux-nodes/mesh-constraint-edit-mode.png" width="300"></a>
 </figure>
-<p>In <span class="boxed-word">object mode</span>, HiPhyEngine will ask for a binding radius and automatically pick the vertices on the simulation object within the radius of the collision object.</p>
+<p>In <span class="boxed-word">object mode</span>, <strong>HiPhyEngine</strong> will ask for a binding radius and automatically pick the vertices on the simulation object within the radius of the collision object.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/mesh-constraint-object-mode.png" data-desc-position="bottom"><img alt="Select Point Constraint" src="../../images/aux-nodes/mesh-constraint-object-mode.png" width="300"></a>
 </figure>
 <p><strong>Mesh constraint</strong> will automatically follow the constraint mesh during <strong>frame change</strong>. The constraint mesh can be animated to move the constraint point. Example <a href="../../demos/point-constraint-demo.blend">here</a>. </p>
 <div class="admonition note">
 <p class="admonition-title">Animating the mesh constraint</p>
-<p>User should always bind the <strong>mesh constraint</strong> at the <strong>start frame</strong>. Do not move the the <strong>mesh constraint</strong> after binding at the <strong>start frame</strong> to prevent instability introduced by a sudden jump at the first frame. Feel free to animate/deform the mesh constraint after the <strong>start frame</strong>. HiPhyEngine will automatically update the mesh constraint points to follow the mesh deformation based on the barycentric weights embeded on the mesh surface when the frame changes. This ensures HiPhyEngine to get the correct constraint position during simulation export. </p>
+<p>User should always bind the <strong>mesh constraint</strong> at the <strong>start frame</strong>. Do not move the the <strong>mesh constraint</strong> after binding at the <strong>start frame</strong> to prevent instability introduced by a sudden jump at the first frame. Feel free to animate/deform the <strong>mesh constraint</strong> after the <strong>start frame</strong>. <strong>HiPhyEngine</strong> will automatically update the mesh constraint points to follow the mesh deformation based on the barycentric weights embeded on the mesh surface when the frame changes. This ensures <strong>HiPhyEngine</strong> to get the correct constraint position during simulation export. </p>
 </div>
 <h2 id="root-constraint">Root Constraint<a class="headerlink" href="#root-constraint" title="Permanent link">#</a></h2>
-<p><strong>Root constraint</strong> are a special type of constraint specically designed for <a href="../../material-models/elastic-rod/#root-constraint">elastic rod</a>. It not only constraints the position but also the frame of the rods. Binding the root constraint the same as binding the mesh constraint in the <span class="boxed-word">object mode</span>. Select the simulation object (curves) and the constraint mesh, <span class="boxed-word">right click</span>-&gt;<span class="boxed-word">Hi Phy Create Root Constraint</span>. HiPhyEngine will automatically find the closest point on the constraint mesh to bind the <strong>first two</strong> vertices of each curve.</p>
+<p><strong>Root constraint</strong> are a special type of constraint specically designed for <a href="../../material-models/elastic-rod/#root-constraint"><strong>elastic rod</strong></a>. It not only constraints the position but also the frame of the rods. Binding the <strong>root constraint</strong> is the same as binding the <strong>mesh constraint</strong> in the <span class="boxed-word">object mode</span>. Select the simulation object (curves) and the constraint mesh, <span class="boxed-word">right click</span>-&gt;<span class="boxed-word">Hi Phy Create Root Constraint</span>. <strong>HiPhyEngine</strong> will automatically find the closest point on the constraint mesh to bind the <strong>first two</strong> vertices of each curve.</p>
 <h2 id="binding-constraint">Binding Constraint<a class="headerlink" href="#binding-constraint" title="Permanent link">#</a></h2>
 <p><strong>Binding constraint</strong> is designed for connecting two simulation objects. A common usage would be stiches between different cloth patches.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/binding-constraint.png" data-desc-position="bottom"><img alt="Binding Constraint" src="../../images/aux-nodes/binding-constraint.png" width="300"></a>
 </figure>
 <p>Similar to <strong>mesh constraint</strong>, <strong>binding Constraint</strong> automatically find points between two simulation objects that are within the given binding radius and create a constraint between them. <strong>Binding constraint</strong>'s creation menu provided two additional parameters <span class="boxed-word">Zero Rest Length Binding</span> and <span class="boxed-word">Curve Can Bind Itself</span></p>
-<p><span class="boxed-word">Zero Rest Length Binding</span> create a <strong>binding constraint</strong> that with zero rest length between them. It is perfect for creating cloth stitches that is meant to be as close as possible. You can find an example for zero rest length <strong>binding constraint</strong> <a href="../../demos/binding-constraint-demo.blend">here</a></p>
-<p><span class="boxed-word">Curve Can Bind Itself</span> option allows each curve in a Blender curves object to bind with itself during binding. Each elastic rod curve can hold its own shape with bend and twist bending, so there is usually no reason to try to bind a curve with itself.</p>
+<p><span class="boxed-word">Zero Rest Length Binding</span> create a <strong>binding constraint</strong> that has zero rest length between them. It is perfect for creating cloth stitches that is meant to be as close as possible. You can find an example for zero rest length <strong>binding constraint</strong> <a href="../../demos/binding-constraint-demo.blend">here</a></p>
+<p><span class="boxed-word">Curve Can Bind Itself</span> option allows each curve in a Blender curves object to bind with itself during binding. Each elastic rod curve can hold its own shape with bend and twist stiffness, so there is usually no reason to try to bind a curve with itself.</p>
+<div class="admonition note">
+<p class="admonition-title">Constraint on soft collider</p>
+<p><strong>Soft collider</strong> only supports <strong>binding constraint</strong></p>
+</div>
 <h2 id="joint-constraint">Joint Constraint<a class="headerlink" href="#joint-constraint" title="Permanent link">#</a></h2>
-<p><strong>Joint constraint</strong> is a special constraint type for creating a joint on a single <strong>affine body</strong> or between two <strong>affine bodies</strong>. When created for a single <strong>affine body</strong>, it allows the <strong>affine body</strong> to rotate around the joint while holding the joint location. When created between <strong>affine bodies</strong>, it makes the two <strong>affine</strong> bodies linked at the joint. </p>
+<p><strong>Joint constraint</strong> is a special constraint type for creating a joint on a single <strong>affine body</strong> or between two <strong>affine bodies</strong>. When created for a single <strong>affine body</strong>, it allows the <strong>affine body</strong> to rotate around the joint while holding the joint location. When created between <strong>affine bodies</strong>, it makes the two <strong>affine bodies</strong> linked at the joint. </p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/joint-constraint.png" data-desc-position="bottom"><img alt="Joint Constraint" src="../../images/aux-nodes/joint-constraint.png" width="300"></a>
 </figure>
 <p>The <span class="boxed-word">Joint Location</span> in the <strong>joint constraint</strong> creation menu is taken from the <span class="boxed-word">Blender Cursor</span>.</p>
-<p>!! note "Joint Location"
-   The joint location does not have to be on either of the <strong>affine body</strong>. It can be any place in the 3D space. The simulator will bind an imaginary point from the object space of the <strong>affine body</strong> to the joint.</p>
-<p>!! note "Axial Rotation"
-   If user wish to restrict the axial rotation of a affine body, two joint constraints can be created on the axis of interest to achieve that.</p>
+<div class="admonition note">
+<p class="admonition-title">Joint Location</p>
+<p>The joint location does not have to be on either of the <strong>affine body</strong>. It can be any place in the 3D space. The simulator will bind an imaginary point from the object space of the <strong>affine body</strong> to the joint.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Axial Rotation</p>
+<p>If user wish to restrict the axial rotation of a affine body, two joint constraints can be created on the axis of interest to achieve that.</p>
+</div>
 <p>An example for <strong>joint constraint</strong> can be found <a href="../../demos/joint-constraint-demo.blend">here</a>.</p>
-<p>!! note "Constraint on soft collider"
-   <strong>Soft collider</strong> only supports <strong>binding constraint</strong></p>
 <h2 id="constraint-parameters">Constraint Parameters<a class="headerlink" href="#constraint-parameters" title="Permanent link">#</a></h2>
-<p>Almost all constraints shares the same set of constraints, with come caveats. Constraints can be either <strong>hard constraint</strong> or <strong>soft constraint</strong>.</p>
-<p>Hard constraints will be enforced exactly in the simulation. All <strong>root constraints</strong> are hard constraints, <strong>point constraint</strong> and <strong>mesh constraint</strong> for <strong>cloth</strong> and <strong>elastic rod</strong> can be hard constraints or soft constraints.</p>
-<p>Soft constraints are enforced approximately in the simulation by behaving as a spring force. The constraint parameter defines the parameter for the constraint force. <strong>point constraint</strong> and <strong>mesh constraint</strong> for <strong>cloth</strong> and <strong>elastic rod</strong> can be hard constraints or soft constraints. <strong>point constraint</strong> and <strong>mesh constraint</strong> for <strong>affine body</strong> and <strong>deformable body</strong> must be soft constraints. All <strong>binding constraints</strong> and <strong>joint constraints</strong> are soft constraints.</p>
-<p>!! note "Numerical stability of hard constraints"
-   It is not recommended to use hard constraints for if the constraints forces to stretch the material. They may create undesirable large deformation around the constraints. Soft constraint will produce much smoother results.</p>
+<p>Almost all constraints shares the same set of parameters, with come caveats.</p>
+<p>Constraints can be either <strong>hard constraint</strong> or <strong>soft constraint</strong>.</p>
+<p><strong>Hard constraints</strong> will be enforced exactly in the simulation. All <strong>root constraints</strong> are hard constraints, <strong>point constraint</strong> and <strong>mesh constraint</strong> for <strong>cloth</strong> and <strong>elastic rod</strong> can be <strong>hard constraints</strong> or <strong>soft constraints</strong>.</p>
+<p><strong>Soft constraints</strong> are enforced approximately in the simulation by behaving as a spring force. The constraint parameters is the parameters for the spring force. <strong>Point constraint</strong> and <strong>mesh constraint</strong> for <strong>cloth</strong> and <strong>elastic rod</strong> can be <strong>hard constraints</strong> or <strong>soft constraints</strong>. <strong>Point constraint</strong> and <strong>mesh constraint</strong> for <strong>affine body</strong> and <strong>deformable body</strong> must be <strong>soft constraints</strong>. All <strong>binding constraints</strong> and <strong>joint constraints</strong> are <strong>soft constraints</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Numerical stability of hard constraints</p>
+<p>It is not recommended to use <strong>hard constraints</strong>, if the constraints stretch the material. They may create undesirable large deformation around the constraints. <strong>Soft constraint</strong> will produce much smoother results.</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -1015,7 +1146,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Mappable Constraint Parameters</p>
-<p>The spring parameters for constraints are mappable. Similar to the mappable parameters on a simulation object, user can control the constraints parameters using a per-point Blender attribute on the constraint object (not the simulation object that is been constraint). </p>
+<p>The spring parameters for constraints are mappable. Similar to the mappable parameters on a simulation object, user can control the constraints parameters using a per-point Blender attribute on the constraint object (not the simulation object that is been constrained). </p>
 </div>
 <h2 id="python-api">Python API<a class="headerlink" href="#python-api" title="Permanent link">#</a></h2>
 <p>To enable user to fully customize the constraint authoring workflow, user can create their own custom constraint calibration workflow, and use the provided Blender Python API to create the constraint objects.</p>
@@ -1093,7 +1224,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   

@@ -712,6 +712,128 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -774,7 +896,7 @@
 
 
 <h1 id="soft-collider">Soft Collider<a class="headerlink" href="#soft-collider" title="Permanent link">#</a></h1>
-<p>Collision objects coming from animation usually will contain self intersection and cause issues for simulations. <strong>Soft collider</strong> is the material model designed for de-intersecting the collision objects while maintaining the silhouette as much as possible. <strong>Soft collider</strong> has carries no momentum, therefore will create no secondary motions. Soft colliders in Blender must be <strong>triangulated</strong> meshes.</p>
+<p>Collision objects coming from animation usually will contain self intersection and cause issues for simulations. <strong>Soft collider</strong> is the material model designed for de-intersecting the collision objects while maintaining the silhouette as much as possible. <strong>Soft collider</strong> carries no momentum, therefore will create no secondary motions. <strong>Soft colliders</strong> in Blender must be <strong>triangulated</strong> meshes.</p>
 <dl>
 <dt><code>Solver</code></dt>
 <dd>
@@ -880,20 +1002,20 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 <p>When vertices comes into contact, it often creates a sharp and irregular shape. The <strong>Fall Off Infleunce</strong> parameter controls how much a contact will influece nearby vertices. Larger the value, more the contact will be smoothed out. This parameter is mappable, but not animatable.</p>
 </div>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h3>
-<p>You can find the a simple soft collider example file <a href="../../demos/soft-collider-simple-demo.blend">here</a>.</p>
-<p>Before soft collider simulation</p>
+<p>You can find the a simple <strong>soft collider</strong> example file <a href="../../demos/soft-collider-simple-demo.blend">here</a>.</p>
+<p>Before simulation</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/soft-collider-demo-1.png" data-desc-position="bottom"><img alt="Soft Collider" src="../../images/material-models/soft-collider-demo-1.png" width="300"></a>
 </figure>
-<p>After soft collider simulation</p>
+<p>After simulation</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/soft-collider-demo-2.png" data-desc-position="bottom"><img alt="Soft Collider" src="../../images/material-models/soft-collider-demo-2.png" width="300"></a>
 </figure>
-<p>You can find the an example for using soft collider to resolve intersection from animation <a href="../../demos/soft-collider-arm-demo.blend">here</a>. The arm is use a simple two joint rig with automatic generated weights. This example also demonstrates how to use the a painted map and <strong>geometry nodes</strong> to create attributes (in this case, <strong>Outer Thickness</strong>), that can be used by the simulator.</p>
+<p>You can find the an example for using <strong>soft collider</strong> to resolve intersection from animation <a href="../../demos/soft-collider-arm-demo.blend">here</a>. The arm is use a simple two joint rig with automatic generated weights. This example also demonstrates how to use the a painted map and <strong>geometry nodes</strong> to create attributes (in this case, <strong>Outer Thickness</strong>), that can be used by the simulator.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/soft-collider-arm-demo-1.png" data-desc-position="bottom"><img alt="Soft Collider" src="../../images/material-models/soft-collider-arm-demo-1.png" width="300"></a>
 </figure>
-<p>After soft collider simulation</p>
+<p>After simulation</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/material-models/soft-collider-arm-demo-2.png" data-desc-position="bottom"><img alt="Soft Collider" src="../../images/material-models/soft-collider-arm-demo-2.png" width="300"></a>
 </figure>
@@ -903,7 +1025,7 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
 </div>
 <div class="admonition note">
 <p class="admonition-title">On the number of <strong>substeps</strong></p>
-<p>If soft collider is used in isolation to clean up animated mesh. The default 10 <strong>substeps</strong> per frame is usually far too many, given there is no dynamics for the soft colliders. User can go as low as 1 substeps per frame. However, reduce substeps might leads to jitter. In such cases, user might need to increase <strong>frame rate</strong>, <strong>time scale</strong>, or increase <strong>substeps</strong>. It is a balance act between simulation stability and number substeps. See <a href="../../aux-nodes/solver/">solver</a> for more details on <strong>substeps</strong>, <strong>frame rate</strong>, and <strong>time scale</strong>.</p>
+<p><strong>soft collider</strong> can used in isolation to clean up animated mesh. The default 10 <strong>substeps</strong> per frame is usually far too many, given there is no dynamics for the <strong>soft colliders</strong>. User can go as low as 1 substeps per frame. However, reduce substeps might leads to jitter. In such cases, user might need to increase <strong>frame rate</strong>, <strong>time scale</strong>, or increase <strong>substeps</strong>. It is a balance act between simulation stability and the number of substeps. See <a href="../../aux-nodes/solver/">solver</a>, for more details on <strong>substeps</strong>, <strong>frame rate</strong>, and <strong>time scale</strong>.</p>
 </div>
 
 
@@ -926,7 +1048,7 @@ When <strong>Driven Shape</strong> is set, the simulation will export from the s
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   

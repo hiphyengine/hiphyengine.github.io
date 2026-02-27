@@ -662,6 +662,128 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -696,13 +818,13 @@
 
 
 <h1 id="property-map-in-blender">Property Map in Blender<a class="headerlink" href="#property-map-in-blender" title="Permanent link">#</a></h1>
-<p>Most of the properties in HiPhyEngine are <strong>mappable</strong>. It means that these properties can be defined using a per-vertex (point domain) attribute. To enable maps, user just need to check the box next to the property, then input the desired <strong>attribute</strong> name. In most case, the <strong>attribute</strong> will need to be on the simulation object, with the exception of the <a href="../../material-models/deformable-body/#properties">mesh bones</a>. For properties that are also <strong>animatable</strong>, user can animate those <strong>attribute</strong> using geometry nodes, modifier, or python scripts. During export, HiPhyEngine will go through the time line and pick up the animated attributes.</p>
+<p>Most of the properties in <strong>HiPhyEngine</strong> are <strong>mappable</strong>. It means that these properties can be defined using a per-vertex (point domain in <strong>Blender</strong>) attribute. To enable maps, user just need to check the box next to the property, then input the desired <strong>attribute</strong> name. In most case, the <strong>attribute</strong> will need to be on the simulation object, with the exception of the <a href="../../material-models/deformable-body/#properties">mesh bones</a>. For properties that are also <strong>animatable</strong>, user can animate those <strong>attribute</strong> using geometry nodes, modifier, or python scripts. During export, <strong>HiPhyEngine</strong> will go through the time line and pick up the animated attributes.</p>
 <figure class="center-figure">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/aux-nodes/map-blender.png" data-desc-position="bottom"><img alt="Blender Map" src="../../images/aux-nodes/map-blender.png" width="300"></a>
 </figure>
 <div class="admonition note">
-<p class="admonition-title"><strong>Can Collider With Other Simulation Object/Colliders</strong></p>
-<p><strong>Can Collider With Other Simulation Object/Colliders</strong> are boolean attributes. However they are still mappable and animatable, to allow user turn on\off collision at any frame as needed for each face. It is a per vertex attribute. A face will only participating collision, if all of its three vertices (two in the case of rods) has collision active.</p>
+<p class="admonition-title"><strong>Can Collide With Other Simulation Object/Colliders</strong></p>
+<p><strong>Can Collide With Other Simulation Object/Colliders</strong> are boolean attributes. However they are still mappable and animatable, to allow user to turn on\off collision at any frame as needed for each face. However, it is still a per vertex (point) attribute. A face will only participating collision, if all of its three vertices (two in the case of rods) has collision active.</p>
 </div>
 
 
@@ -725,7 +847,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2026 HiPhyEngine
+      Copyright © 2026 Haixiang Liu
     </div>
   
   
