@@ -1,0 +1,1339 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../aux-nodes/force-field-and-expression-in-blender/">
+      
+      
+        <link rel="next" href="../../get-hiphy/download/">
+      
+      
+      <link rel="icon" href="../../images/hiphy-logo-mid.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>MPM Simulation - HiPhyEngine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mpm-simulation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="HiPhyEngine" class="md-header__button md-logo" aria-label="HiPhyEngine" data-md-component="logo">
+      
+  <img src="../../images/hiphy-logo-mid.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HiPhyEngine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MPM Simulation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="HiPhyEngine" class="md-nav__button md-logo" aria-label="HiPhyEngine" data-md-component="logo">
+      
+  <img src="../../images/hiphy-logo-mid.png" alt="logo">
+
+    </a>
+    HiPhyEngine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quick Start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quick Start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/quick-start-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blender Quick Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/how-hiphyengine-blender-addon-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How HiPhyEngine Blender Addon Works
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Material Models
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Material Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/material-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/affine-body/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Affine Body
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/elastic-rod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elastic Rod
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/cloth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/deformable-body/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deformable Body
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/soft-collider/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soft Collider
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Auxiliary Nodes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Auxiliary Nodes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/solver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/property-map-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Property Map in Blender
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/constraints-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constraints in Blender
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/force-field-and-expression-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Force Field and Expression in Blender
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Snow, Sand, and Beyond with MPM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Snow, Sand, and Beyond with MPM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MPM Simulation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    MPM Simulation
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#related-objects" class="md-nav__link">
+    Related Objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpm-solver" class="md-nav__link">
+    MPM Solver
+  </a>
+  
+    <nav class="md-nav" aria-label="MPM Solver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpm-grid-embedding" class="md-nav__link">
+    MPM Grid Embedding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material-parameters" class="md-nav__link">
+    Material Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snow-parameters" class="md-nav__link">
+    Snow Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sand-parameters" class="md-nav__link">
+    Sand Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/feature-suggestion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/submitting-reels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Submitting Reels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#related-objects" class="md-nav__link">
+    Related Objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mpm-solver" class="md-nav__link">
+    MPM Solver
+  </a>
+  
+    <nav class="md-nav" aria-label="MPM Solver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpm-grid-embedding" class="md-nav__link">
+    MPM Grid Embedding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material-parameters" class="md-nav__link">
+    Material Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snow-parameters" class="md-nav__link">
+    Snow Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sand-parameters" class="md-nav__link">
+    Sand Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="mpm-simulation">MPM Simulation<a class="headerlink" href="#mpm-simulation" title="Permanent link">#</a></h1>
+<p><strong>HiPhyEngine</strong> also provides a mpm solver for simulating phenomenons such as snow, mud, and sand. <strong>HiPhyEngine</strong> implements two principle material models <a href="https://media.disneyanimation.com/uploads/production/publication_asset/94/asset/SSCTS13_2.pdf"><strong>Snow</strong></a> and <a href="https://math.ucdavis.edu/~jteran/papers/KGPSJT16.pdf"><strong>Sand</strong></a>. Despite of the material names, the material parameters can be tuned for other phenomenons, such as bread dough, mud, and other type of solid materials that have semi-fluid behaviors.</p>
+<p>MPM simulation is separate from the Lagrangian simulation, and they will not be coupled together.</p>
+<h2 id="related-objects">Related Objects<a class="headerlink" href="#related-objects" title="Permanent link">#</a></h2>
+<dl>
+<dt><code>Solver</code></dt>
+<dd>
+<p>The <strong>Solver</strong> object for the simulation.</p>
+</dd>
+<dt><code>Driven Shape</code></dt>
+<dd>
+<p>As noted in <a href="../../overview/how-hiphyengine-blender-addon-works/">overview</a>, in Blender, the simulation cache directly deforms the point attribute before any modifier is applied. While during export, all modifiers of the simulation object is applied. This means that having any modifiers on the simulation object that changes point position or vertex count on the simulation object will leads to a discrepancy between the simulation mesh and the simulation cache. <strong>Driven Shape</strong> is designed to bypass this limitation. If user wish to apply modifiers after the simulation result, user can apply the modifiers to the <strong>Driven Shape</strong> instead of the simulation object.
+When <strong>Driven Shape</strong> is set, the simulation will export from the simulation object, but deforms the <strong>Driven Shape</strong> (instead of the simulation object).</p>
+</dd>
+</dl>
+<h2 id="mpm-solver">MPM Solver<a class="headerlink" href="#mpm-solver" title="Permanent link">#</a></h2>
+<p>MPM Solver shares most of the same properties as the Lagrangian solver. Please refer to the <a href="../../aux-nodes/solver/">Lagrangian solver</a> for the details on the solver parameters.</p>
+<h3 id="mpm-grid-embedding">MPM Grid Embedding<a class="headerlink" href="#mpm-grid-embedding" title="Permanent link">#</a></h3>
+<p>MPM solver embeds the MPM particles in a background grid for simulation. The <strong>grid cell size</strong> determines the resolution of the underlying grid. It is recommended to have about 8 particles per grid cell. The <strong>grid cell size</strong> is in <strong>model unit</strong>.</p>
+<h2 id="material-parameters">Material Parameters<a class="headerlink" href="#material-parameters" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Description</th>
+<th>Unit</th>
+<th>Is Mappable</th>
+<th>Is Animatable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gravity</td>
+<td>The gravitaional acceleration</td>
+<td><span class="arithmatex">\(cm/s^2\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>External Force</td>
+<td>Additional external force</td>
+<td><span class="arithmatex">\(10\mu N = g*cm/s^2\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Particle Density</td>
+<td>Density of the mpm particle</td>
+<td><span class="arithmatex">\(g/cm^3\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Particle Radius</td>
+<td>Radius of the mpm particle</td>
+<td><span class="arithmatex">\(cm\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Friction Coefficient</td>
+<td>The friction coefficient for the mpm particle</td>
+<td>Unitless</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Sticking Factor</td>
+<td>How easy it is for the particle to stick to collision surfaces, 1 is always sticking</td>
+<td>Unitless</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Sticking Factor</p>
+<p><strong>Sticking factor</strong> is a modifier to friction behavior. Normally, if the friction is no high enough, the particle will slide on a surface. Larger <strong>Sticking factor</strong> makes the particles more easy to stick even when the friction is low. At 1, the particle will always stick to collision surfaces regardless of friction.</p>
+</div>
+<h2 id="snow-parameters">Snow Parameters<a class="headerlink" href="#snow-parameters" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Description</th>
+<th>Unit</th>
+<th>Is Mappable</th>
+<th>Is Animatable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mu <span class="arithmatex">\(\mu\)</span></td>
+<td>The second Lamé  parameter, shear modulus, <span class="arithmatex">\(\mu\)</span>. It roughly corresponding to resistance to the shearing motion</td>
+<td><span class="arithmatex">\(0.1 Pa = g/cm/s^2\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Lambda <span class="arithmatex">\(\lambda\)</span></td>
+<td>The first Lamé  parameter, <span class="arithmatex">\(\lambda\)</span>. It roughly corresponding to area preservation</td>
+<td><span class="arithmatex">\(0.1 Pa = g/cm/s^2\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Stretch Yield</td>
+<td>How much the material can stretch before breaking</td>
+<td>Unitless</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Compression Yield</td>
+<td>How much the material can compress before hardening</td>
+<td>Unitless</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Hardening Factor</td>
+<td>The maximum amount the material will harden under compression</td>
+<td>Unitless</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Good Material Parameters</p>
+<p>Figure 8 of the <a href="https://media.disneyanimation.com/uploads/production/publication_asset/94/asset/SSCTS13_2.pdf">work</a>, provided a good set of parameters to start with. Our default value matches the default value in table 2 with converted units (kg -&gt; g, m -&gt; cm). Another caviar is that the paper uses the Young's Modulus (<span class="arithmatex">\(E\)</span>) and Poison Ratio (<span class="arithmatex">\(\nu\)</span>). To convert it to Lamé parameters, user can follow this <a href="https://en.wikipedia.org/wiki/Lam%C3%A9_parameters">table</a>, or the following formula: <span class="arithmatex">\(\lambda = \frac{E \nu}{(1 + \nu)(1 - 2\nu)}\)</span> and <span class="arithmatex">\(\mu = \frac{E}{2(1 + \nu)}\)</span>. Alternatively, user can use the following rule: if Young's Modulus (<span class="arithmatex">\(E\)</span>) is doubled, user just need to double both of the Lamé parameters <span class="arithmatex">\(\lambda\)</span> and <span class="arithmatex">\(\mu\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Stretch and Compression</p>
+<p>The key material behavior of snow, is that it breaks while stretch, and hardens when compressed. A <strong>Stretch Yield</strong> of <strong>0.0075</strong> means the material can stretch 0.75% before breaking. For compression, snow instead of breaking, it become harder. <strong>Compression Yield</strong> and <strong>Hardening Factor</strong> determines how fast the snow packs up, and how hard it can get. User can experiment with <strong>Stretch Yield</strong> and <strong>Compression Yield</strong> for creating more materials that are more elastic than snow, such as bread dough.</p>
+</div>
+<h2 id="sand-parameters">Sand Parameters<a class="headerlink" href="#sand-parameters" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Description</th>
+<th>Unit</th>
+<th>Is Mappable</th>
+<th>Is Animatable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mu <span class="arithmatex">\(\mu\)</span></td>
+<td>The second Lamé parameter, shear modulus, <span class="arithmatex">\(\mu\)</span>. It roughly corresponding to resistance to the shearing motion</td>
+<td><span class="arithmatex">\(0.1 Pa = g/cm/s^2\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Lambda <span class="arithmatex">\(\lambda\)</span></td>
+<td>The first Lamé parameter, <span class="arithmatex">\(\lambda\)</span>. It roughly corresponding to area preservation</td>
+<td><span class="arithmatex">\(0.1 Pa = g/cm/s^2\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Cohesion Coefficient</td>
+<td>How much the material internally resists deformation</td>
+<td><span class="arithmatex">\(0.1 Pa = g/cm/s^2\)</span></td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>Internal Friction</td>
+<td>How much the material internally resists shearing</td>
+<td>Unitless</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Cohesion and Internal Friction</p>
+<p>The key to sand material is the friction between different grains. Larger <strong>internal friction</strong> mimics coarse send that are easier to retain its shape, smaller <strong>internal friction</strong> are more suitable for simulating finer grains of sand that behaves more like fluid. <strong>Cohesion coefficient</strong> can be viewed as how wet the sand is. Higher <strong>Cohesion Coefficient</strong> means the send can retain its shape easier and behave more like wet send. <strong>Cohesion coefficient</strong> has the same unit as the Lamé parameters, so it will need to be around he similar order of magnitude as the Lamé parameters to start showing its effect.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Force field</p>
+<p>MPM simulation currently does not support force fields.</p>
+</div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<p>An example for a high resolution simulation of the snow material can be find <a href="../../demos/mpm-complex-hi-res-demo.blend">here</a>. The example also shows how to setup the rendering of the snow material with the <strong>driven shape</strong> (Credit <a href="https://www.youtube.com/watch?v=hpc7gWAoc18">@theworkshopwarrior</a> for the geometry node setup).</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/mpm/snow-1.png" data-desc-position="bottom"><img alt="Show" src="../../images/mpm/snow-1.png" width="300"></a>
+</figure>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/mpm/snow-2.png" data-desc-position="bottom"><img alt="Show" src="../../images/mpm/snow-2.png" width="300"></a>
+</figure>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/mpm/snow-3.png" data-desc-position="bottom"><img alt="Show" src="../../images/mpm/snow-3.png" width="300"></a>
+</figure>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/mpm/snow-4.png" data-desc-position="bottom"><img alt="Show" src="../../images/mpm/snow-4.png" width="300"></a>
+</figure>
+<p>A lower resolution simulation of the snow material with a rotating collider can be find <a href="../../demos/mpm-complex-rotate-demo.blend">here</a>.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 HiPhyEngine LLC
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

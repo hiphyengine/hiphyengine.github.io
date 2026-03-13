@@ -1,0 +1,17 @@
+# Welcome to HiPhyEngine!
+
+HiPhyEngine is a high fidelity physics simulation engine for simulating various different materials (rigid body, cloth, hair, muscle). HiPhyEngine allows full coupling between different materials, and will guarantee the simulation result to be intersection free. HiPhyEngine is designed to provide artists with maximum control, it supports parameter maps and animation, and expressions. It also comes with variety of tools, such as force fields, constraint authoring, gravity compensation and soft collider to assist building simulation rigs, and clean up animation geometries for intersections. 
+
+## Commands
+
+* `mkdocs new [dir-name]` - Create a new project.
+* `mkdocs serve` - Start the live-reloading docs server.
+* `mkdocs build` - Build the documentation site.
+* `mkdocs -h` - Print help message and exit.
+
+## Project layout
+
+    mkdocs.yml    # The configuration file.
+    docs/
+        index.md  # The documentation homepage.
+        ...       # Other markdown pages, images and other files.
