@@ -1,0 +1,29 @@
+# Future Updates
+
+Here is a list of features that is currently on our future plan. It is not a formal road map, as we don't currently have an planned time or date for those feature releases, they are just something we are planning to work on. We will release them once they are finished!
+
+`Mesh to Hair Conversion`
+
+: A workflow that allows to convert quad hair proxy meshes to Blender hair curves object. It will significantly improve Blender's hair grooming workflow, and help setup simulation guides and curves interpolation with HiPhyEngine.
+
+`Interactive Simulation Mode`
+
+: An interactive way to run HiPhyEngine simulation without the need for baking.
+
+`Grab Constraints`
+
+: A new type of constraints that simplified grabbing and holding simulation objects dynamically.
+
+`Better Triangulation`
+
+: The Blender's default triangulation is not optimal for simulation. We need a better triangulation algorithm for creating triangulated simulation meshes, and transfer the simulation result onto a final render mesh that may not have matched vertex count.
+
+`Automated UV Computation For Cloth Panels`
+
+: A way to compute cloth panel UV automatically even with none-axis aligned panels
+
+`Compute Center of Mass`
+
+: A way to help user find the center of mass of an affine body.
+
+If you have any suggestion, feel free to contact us!

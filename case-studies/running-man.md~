@@ -1,0 +1,131 @@
+# Running Man
+
+![type:video](../videos/deformable-body-demo.mp4){: style="width: 80%; height: 24.5vw;display:block; margin-left:auto; margin-right:auto;"}
+
+In this example, we will demonstrate how to set up a full body simulation using [**deformable body**](../material-models/deformable-body.md).
+
+The file we start with can be found [here](../demos/deformable-body-running-demo-start.blend)
+
+## Step 1: Create Mesh Bone
+
+In the <span class="boxed-word">Modeling</span> collection, you can find <span class="boxed-word">BodyGeo_Orig</span> mesh, it is the body mesh we are going to simulation.
+
+We want to create a simulation of the running man with a jiggling belly. To achieve this, we are going to use the idea of the **mesh bone**. **mesh bone** is an mesh that the internal of the deformable body simulation will try to follow (hence the name **mesh bone**). The more distance the mesh bone has to the surface, more deformation and secondary motion (jiggle) the simulation will have.
+
+We will start with <span class="boxed-word">BodyGeo_Orig</span>, and use the brushing tools to push in the belly region.
+
+<figure markdown="span" class="center-figure">
+  ![Collider](../images/case-studies/running-man/body-geo-orig.png){ width="300" }
+</figure>
+
+- Select <span class="boxed-word">BodyGeo_Orig</span>
+
+- Goto <span class="boxed-word">Sculpt Mode</span>
+
+- Use <span class="boxed-word">Subtract</span>
+
+- Turn on <span class="boxed-word">Symmetry in the X axis</span>
+
+- Start Brushing!
+
+We provided a <span class="boxed-word">BodyBoneMesh_Orig</span> as a reference, this is the mesh bone we used in our setup.
+
+<figure markdown="span" class="center-figure">
+  ![Collider](../images/case-studies/running-man/body-bone-mesh-orig.png){ width="300" }
+</figure>
+
+## Step 2: Get Animation (optional)
+
+You can use website like Mixamo to get an animation for the **mesh bone**. However, in the example file, we already have an animated **mesh bone** in the <span class="boxed-word">Simulation Rig</span> collection. In the following steps, we will use the provided animation as example.
+
+## Step 3: Setup Preroll
+
+- goto frame -30
+
+!!! note "Negative Frames"
+    If you can't go to frame -30, goto <span class="boxed-word">edit</span>-><span class="boxed-word">preference</span>-><span class="boxed-word">Animation</span>-><span class="boxed-word">Timeline</span>, make sure <span class="boxed-word">Allow Negative Frames</span> is checked.
+
+- Select <span class="boxed-word">Armature</span> enter <span class="boxed-word">Pose Mode</span>
+
+- Select all joints, and press <span class="boxed-word">Alt-R</span> to reset all rotations,
+
+- Select <span class="boxed-word">mixamorig:Hips</span> joint, reset all translation
+
+- Key all joint
+
+!!! note "Initial Velocity"
+    The animation has a starting velocity, as the animation does not have a transition from stationary to running. To prevent the sudden motion at the first frame, we need to add a starting velocity to the preroll. The initial velocity can be computed using the first frame displacement of the hip joint and multiply it by 30.
+
+- Select <span class="boxed-word">mixamorig:Hips</span> joint, set the z-translation to -2.41672 m
+
+- Goto <span class="boxed-word">Object Mode</span>, Select <span class="boxed-word">BodyGeo</span> joint, set the y-translation to 2.41672 m, so the <span class="boxed-word">BodyGeo</span> aligns up with the <span class="boxed-word">BodyBoneMesh</span> at frame -30
+
+## Step 4: Set Solver
+
+- Create an empty plane axis, rename it <span class="boxed-word">solver</span>, goto the <span class="boxed-word">physics</span> panel, turn on <span class="boxed-word">HiPhy</span>, select <span class="boxed-word">Lagrangian Solver</span>
+
+- Change the Newton tolerance to 2.
+
+- Change the CG tolerance to 2.
+
+- Change the Start Frame to -30.
+
+- Change the End Frame to 100.
+
+## Step 4: Set Deformable Body
+
+Before we set the simulation parameters, we need to first subdivide the <span class="boxed-word">BodyGeo</span> mesh.
+
+!!! note "Simulation Resolution for **Deformable Body**"
+    Unlike other materials, the simulation resolution for **Deformable Body** is not determined by the mesh resolution, but the **Deformable Body Grid Resolution** on the solver. **HiPhyEngine** embeds the simulation into a background grid for simulation. However, the simulation mesh size still determines the collision resolution, so you do not want the simulation mesh to be significantly larger than the simulation grid size.
+
+- Select <span class="boxed-word">BodyGeo</span>, add a <span class="boxed-word">subdivision surface</span> modifier, set the subdivision level to 1.
+
+- Add a <span class="boxed-word">Triangulate</span> modifier to <span class="boxed-word">BodyGeo</span>, check <span class="boxed-word">keep normal</span>.
+
+- Select <span class="boxed-word">BodyBoneMesh</span>, add a <span class="boxed-word">subdivision surface</span> modifier, set the subdivision level to 1.
+
+!!! note "BodyBoneMesh Resolution"
+    The **mesh bone** does not need to match the vertex count the **simulation mesh**. However, in our case, for majority of the body, the **mesh bone** is on the surface of the **simulation mesh**. In such case, if the **mesh bone** does not match the **simulation mesh**, there will be artifact on the simulation mesh after showing the discrepancy between the two meshes. If user is interested, you can skip this step and see the simulation artifact.
+
+- Duplicate <span class="boxed-word">BodyGeo</span> to <span class="boxed-word">BodyGeo.Driven</span>, delete the <span class="boxed-word">triangulate</span> modifier and apply the <span class="boxed-word">subdivision surface</span>.
+
+- Select <span class="boxed-word">BodyGeo</span>, turn on <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel, choose <span class="boxed-word">Deformable Body</span> as the material model
+
+- select <span class="boxed-word">solver</span> for the **solver**
+
+- select <span class="boxed-word">BodyBoneMesh</span> for the **Mesh Bone**
+
+- select <span class="boxed-word">BodyGeo.Driven</span> for the **Driven Shape**
+
+- Change <span class="boxed-word">Friction Coefficient</span> to 0.1. (The arm is constantly rubbing the belly and we don't want them to snag)
+
+Now you can run the simulation and see the result!
+
+## Step 6: Solver Failure
+
+If you ran the simulation now, you should get an error like this around frame 5.
+
+<figure markdown="span" class="center-figure">
+  ![Solver Failure](../images/case-studies/running-man/solver-failure.png){ width="300" }
+</figure>
+
+The **deformable body** uses a multigrid solver that is very fast, but unfortunately our implementation can not guarantee convergence for the linear solver. If user saw this error, it is an indication that damping factor is too high. 
+
+- Select <span class="boxed-word">solver</span>, change <span class="boxed-word">Deformable Body Smoothing Iteration Damping</span> to 0.2.
+
+The value of 0.2 is working for all the tests we have ran (we will update the default value to 0.2), if it doesn't work, user can try 0.1. The <span class="boxed-word">Deformable Body Smoothing Iteration Damping</span> is animatable, so user can change the value and resume at which ever frame it failed. If nothing works, user can turn off the multigrid method all together. Checkout the [multigrid](../material-models/deformable-body.md#grid-embedding) for more detail. Unfortunately, <span class="boxed-word">Deformable Body Multigrid Level</span> is not animatable, so user will have to re-run the whole simulation for the change of multigrid levels to take effect.
+
+## Step 5: Make it jiggle!
+
+The default parameter is for muscle like material, so it won't have much jiggle, to make the character jiggle, we need to turn down the stiffness
+
+- Select <span class="boxed-word">BodyGeo</span>, change <span class="boxed-word">mu</span> to **100000** (divide the default value by 10), change <span class="boxed-word">mu</span> to **200000**.
+
+!!! note "$\lambda$ and $\mu$ ratio and incompressibility"
+    The ratio between $\lambda$ and $\mu$ defines the incompressibility of the material, specifically the equation is $\frac{\lambda}{2(\lambda + \mu)}$. As a (very inaccurate) rule of thumb, user can view the value $1 -\frac{\lambda}{2(\lambda + \mu)}$ as how easy to compress that much volume. That if the $\lambda$ twice the value of $\mu$, it means about 30% of the volume can be fairly easily compressed, If the $\lambda$ ten times the value of $\mu$, it means only $10%$ can be compressed. Very incompressible might introduce numerical issues to the solver.
+
+- change <span class="boxed-word">mesh bone binding stiffness</span> to **100000** (divide the default value by 10). (We want to loosen up the mesh bone a bit, so the jiggle can propagate a little).
+
+That's it! The final file with can be found [here](../demos/deformable-body-running-demo-final.blend)
+

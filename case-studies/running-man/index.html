@@ -1,0 +1,1764 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Developed ex-Disney developer, HiPhyEngine is the most powerful Blender physics simulation addon for cloth, hair, softbody, and snow and sand.">
+      
+      
+      
+        <link rel="canonical" href="https://hiphyengine.github.io/case-studies/running-man/">
+      
+      
+        <link rel="prev" href="../hair/">
+      
+      
+        <link rel="next" href="../../video-tutorials/video-tutorials/">
+      
+      
+      <link rel="icon" href="../../images/hiphy-logo-mid.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+    
+    
+      
+        <title>Running Man - HiPhyEngine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.649f08f9.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#running-man" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="HiPhyEngine" class="md-header__button md-logo" aria-label="HiPhyEngine" data-md-component="logo">
+      
+  <img src="../../images/hiphy-logo-mid.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HiPhyEngine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Running Man
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="HiPhyEngine" class="md-nav__button md-logo" aria-label="HiPhyEngine" data-md-component="logo">
+      
+  <img src="../../images/hiphy-logo-mid.png" alt="logo">
+
+    </a>
+    HiPhyEngine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quick Start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quick Start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/quick-start-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blender Quick Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/how-hiphyengine-blender-addon-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How HiPhyEngine Blender Addon Works
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Material Models
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Material Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/material-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/affine-body/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Affine Body
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/elastic-rod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elastic Rod (Hair)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/cloth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/deformable-body/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deformable Body
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../material-models/soft-collider/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soft Collider
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Auxiliary Nodes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Auxiliary Nodes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/solver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/property-map-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Property Map
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/constraints-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/force-field-and-expression-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Force Field and Expression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/curves-motion-mapper-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Curves Motion Mapper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aux-nodes/mesh-motion-mapper-in-blender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mesh Motion Mapper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Snow, Sand, and Beyond with MPM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Snow, Sand, and Beyond with MPM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpm/mpm-simulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MPM Simulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case Studies and Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case Studies and Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case-studies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case Studies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glove/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glove
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Snow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailor-interactive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Tailor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailor-dress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailor Dress
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dress-dance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dress Dance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hair/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hair
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Running Man
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Running Man
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-mesh-bone" class="md-nav__link">
+    Step 1: Create Mesh Bone
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-get-animation-optional" class="md-nav__link">
+    Step 2: Get Animation (optional)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-setup-preroll" class="md-nav__link">
+    Step 3: Setup Preroll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-set-solver" class="md-nav__link">
+    Step 4: Set Solver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-set-deformable-body" class="md-nav__link">
+    Step 4: Set Deformable Body
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-make-it-jiggle" class="md-nav__link">
+    Step 5: Make it jiggle!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Video Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Video Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../video-tutorials/video-tutorials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List of Video Tutorials Series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get HiPhyEngine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Get HiPhyEngine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-hiphy/download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
+        
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Future Updates
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Future Updates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../future-plan/future-plan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Future Updates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11">
+        
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            FAQ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently Asked Questions and Common Issues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12">
+        
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/release-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13">
+        
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Contact
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/bug-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bug Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/feature-suggestion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Request
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/submitting-reels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Submitting Reels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-mesh-bone" class="md-nav__link">
+    Step 1: Create Mesh Bone
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-get-animation-optional" class="md-nav__link">
+    Step 2: Get Animation (optional)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-setup-preroll" class="md-nav__link">
+    Step 3: Setup Preroll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-set-solver" class="md-nav__link">
+    Step 4: Set Solver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-set-deformable-body" class="md-nav__link">
+    Step 4: Set Deformable Body
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-make-it-jiggle" class="md-nav__link">
+    Step 5: Make it jiggle!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="running-man">Running Man<a class="headerlink" href="#running-man" title="Permanent link">#</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../videos/deformable-body-demo.mp4" data-desc-position="bottom"></a></p><div class="video-container"><iframe src="../../videos/deformable-body-demo.mp4" style="width: 80%; height: 24.5vw;display:block; margin-left:auto; margin-right:auto;" frameborder="0" allowfullscreen alt="type:video"></iframe></div><p></p>
+<p>In this example, we will demonstrate how to set up a full body simulation using <a href="../../material-models/deformable-body/"><strong>deformable body</strong></a>.</p>
+<p>The file we start with can be found <a href="../../demos/deformable-body-animation-running-demo-start.blend">here</a></p>
+<h2 id="step-1-create-mesh-bone">Step 1: Create Mesh Bone<a class="headerlink" href="#step-1-create-mesh-bone" title="Permanent link">#</a></h2>
+<p>In the <span class="boxed-word">Modeling</span> collection, you can find <span class="boxed-word">BodyGeo_Orig</span> mesh, it is the body mesh we are going to simulation.</p>
+<p>We want to create a simulation of the running man with a jiggling belly. To achieve this, we are going to use the idea of the <strong>mesh bone</strong>. <strong>mesh bone</strong> is an mesh that the internal of the deformable body simulation will try to follow (hence the name <strong>mesh bone</strong>). The more distance the mesh bone has to the surface, more deformation and secondary motion (jiggle) the simulation will have.</p>
+<p>We will start with <span class="boxed-word">BodyGeo_Orig</span>, and use the brushing tools to push in the belly region.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/case-studies/running-man/body-geo-orig.png" data-desc-position="bottom"><img alt="Collider" src="../../images/case-studies/running-man/body-geo-orig.png" width="300"></a>
+</figure>
+<ul>
+<li>
+<p>Select <span class="boxed-word">BodyGeo_Orig</span></p>
+</li>
+<li>
+<p>Goto <span class="boxed-word">Sculpt Mode</span></p>
+</li>
+<li>
+<p>Use <span class="boxed-word">Subtract</span></p>
+</li>
+<li>
+<p>Turn on <span class="boxed-word">Symmetry in the X axis</span></p>
+</li>
+<li>
+<p>Start Brushing!</p>
+</li>
+</ul>
+<p>We provided a <span class="boxed-word">BodyBoneMesh_Orig</span> as a reference, this is the mesh bone we used in our setup.</p>
+<figure class="center-figure">
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/case-studies/running-man/body-bone-mesh-orig.png" data-desc-position="bottom"><img alt="Collider" src="../../images/case-studies/running-man/body-bone-mesh-orig.png" width="300"></a>
+</figure>
+<h2 id="step-2-get-animation-optional">Step 2: Get Animation (optional)<a class="headerlink" href="#step-2-get-animation-optional" title="Permanent link">#</a></h2>
+<p>You can use website like Mixamo to get an animation for the <strong>mesh bone</strong>. However, in the example file, we already have an animated <strong>mesh bone</strong> in the <span class="boxed-word">Simulation Rig</span> collection. In the following steps, we will use the provided animation as example.</p>
+<h2 id="step-3-setup-preroll">Step 3: Setup Preroll<a class="headerlink" href="#step-3-setup-preroll" title="Permanent link">#</a></h2>
+<ul>
+<li>goto frame -30</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Negative Frames</p>
+<p>If you can't go to frame -30, goto <span class="boxed-word">edit</span>-&gt;<span class="boxed-word">preference</span>-&gt;<span class="boxed-word">Animation</span>-&gt;<span class="boxed-word">Timeline</span>, make sure <span class="boxed-word">Allow Negative Frames</span> is checked.</p>
+</div>
+<ul>
+<li>
+<p>Select <span class="boxed-word">Armature</span> enter <span class="boxed-word">Pose Mode</span></p>
+</li>
+<li>
+<p>Select all joints, and press <span class="boxed-word">Alt-R</span> to reset all rotations,</p>
+</li>
+<li>
+<p>Select <span class="boxed-word">mixamorig:Hips</span> joint, reset all translation</p>
+</li>
+<li>
+<p>Key all joint</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Initial Velocity</p>
+<p>The animation has a starting velocity, as the animation does not have a transition from stationary to running. To prevent the sudden motion at the first frame, we need to add a starting velocity to the preroll. The initial velocity can be computed using the first frame displacement of the hip joint and multiply it by 30.</p>
+</div>
+<ul>
+<li>
+<p>Select <span class="boxed-word">mixamorig:Hips</span> joint, set the z-translation to -2.41672 m</p>
+</li>
+<li>
+<p>Goto <span class="boxed-word">Object Mode</span>, Select <span class="boxed-word">BodyGeo</span> joint, set the y-translation to 2.41672 m, so the <span class="boxed-word">BodyGeo</span> aligns up with the <span class="boxed-word">BodyBoneMesh</span> at frame -30</p>
+</li>
+</ul>
+<h2 id="step-4-set-solver">Step 4: Set Solver<a class="headerlink" href="#step-4-set-solver" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p>Create an empty plane axis, rename it <span class="boxed-word">solver</span>, goto the <span class="boxed-word">physics</span> panel, turn on <span class="boxed-word">HiPhy</span>, select <span class="boxed-word">Lagrangian Solver</span></p>
+</li>
+<li>
+<p>Change the Newton tolerance to 2.</p>
+</li>
+<li>
+<p>Change the CG tolerance to 2.</p>
+</li>
+<li>
+<p>Change the Start Frame to -30.</p>
+</li>
+<li>
+<p>Change the End Frame to 100.</p>
+</li>
+</ul>
+<h2 id="step-4-set-deformable-body">Step 4: Set Deformable Body<a class="headerlink" href="#step-4-set-deformable-body" title="Permanent link">#</a></h2>
+<p>Before we set the simulation parameters, we need to first subdivide the <span class="boxed-word">BodyGeo</span> mesh.</p>
+<div class="admonition note">
+<p class="admonition-title">Simulation Resolution for <strong>Deformable Body</strong></p>
+<p>Unlike other materials, the simulation resolution for <strong>Deformable Body</strong> is not determined by the mesh resolution, but the <strong>Deformable Body Grid Resolution</strong> on the solver. <strong>HiPhyEngine</strong> embeds the simulation into a background grid for simulation. However, the simulation mesh size still determines the collision resolution, so you do not want the simulation mesh to be significantly larger than the simulation grid size.</p>
+</div>
+<ul>
+<li>
+<p>Select <span class="boxed-word">BodyGeo</span>, add a <span class="boxed-word">subdivision surface</span> modifier, set the subdivision level to 1.</p>
+</li>
+<li>
+<p>Add a <span class="boxed-word">Triangulate</span> modifier to <span class="boxed-word">BodyGeo</span>, check <span class="boxed-word">keep normal</span>.</p>
+</li>
+<li>
+<p>Select <span class="boxed-word">BodyBoneMesh</span>, add a <span class="boxed-word">subdivision surface</span> modifier, set the subdivision level to 1.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">BodyBoneMesh Resolution</p>
+<p>The <strong>mesh bone</strong> does not need to match the vertex count the <strong>simulation mesh</strong>. However, in our case, for majority of the body, the <strong>mesh bone</strong> is on the surface of the <strong>simulation mesh</strong>. In such case, if the <strong>mesh bone</strong> does not match the <strong>simulation mesh</strong>, there will be artifact on the simulation mesh after showing the discrepancy between the two meshes. If user is interested, you can skip this step and see the simulation artifact.</p>
+</div>
+<ul>
+<li>
+<p>Duplicate <span class="boxed-word">BodyGeo</span> to <span class="boxed-word">BodyGeo.Driven</span>, delete the <span class="boxed-word">triangulate</span> modifier and apply the <span class="boxed-word">subdivision surface</span>.</p>
+</li>
+<li>
+<p>Select <span class="boxed-word">BodyGeo</span>, turn on <span class="boxed-word">Hi Phy</span> in the <span class="boxed-word">Physics</span> panel, choose <span class="boxed-word">Deformable Body</span> as the material model</p>
+</li>
+<li>
+<p>select <span class="boxed-word">solver</span> for the <strong>solver</strong></p>
+</li>
+<li>
+<p>select <span class="boxed-word">BodyBoneMesh</span> for the <strong>Mesh Bone</strong></p>
+</li>
+<li>
+<p>select <span class="boxed-word">BodyGeo.Driven</span> for the <strong>Driven Shape</strong></p>
+</li>
+<li>
+<p>Change <span class="boxed-word">Friction Coefficient</span> to 0.1. (The arm is constantly rubbing the belly and we don't want them to snag)</p>
+</li>
+</ul>
+<p>Now you can run the simulation and see the result!</p>
+<h2 id="step-5-make-it-jiggle">Step 5: Make it jiggle!<a class="headerlink" href="#step-5-make-it-jiggle" title="Permanent link">#</a></h2>
+<p>The default parameter is for muscle like material, so it won't have much jiggle, to make the character jiggle, we need to turn down the stiffness</p>
+<ul>
+<li>Select <span class="boxed-word">BodyGeo</span>, change <span class="boxed-word">mu</span> to <strong>100000</strong> (divide the default value by 10), change <span class="boxed-word">mu</span> to <strong>200000</strong>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><span class="arithmatex">\(\lambda\)</span> and <span class="arithmatex">\(\mu\)</span> ratio and incompressibility</p>
+<p>The ratio between <span class="arithmatex">\(\lambda\)</span> and <span class="arithmatex">\(\mu\)</span> defines the incompressibility of the material, specifically the equation is <span class="arithmatex">\(\frac{\lambda}{2(\lambda + \mu)}\)</span>. As a (very inaccurate) rule of thumb, user can view the value <span class="arithmatex">\(1 -\frac{\lambda}{2(\lambda + \mu)}\)</span> as how easy to compress that much volume. That if the <span class="arithmatex">\(\lambda\)</span> twice the value of <span class="arithmatex">\(\mu\)</span>, it means about 30% of the volume can be fairly easily compressed, If the <span class="arithmatex">\(\lambda\)</span> ten times the value of <span class="arithmatex">\(\mu\)</span>, it means only <span class="arithmatex">\(10%\)</span> can be compressed. Very incompressible might introduce numerical issues to the solver.</p>
+</div>
+<ul>
+<li>change <span class="boxed-word">mesh bone binding stiffness</span> to <strong>100000</strong> (divide the default value by 10). (We want to loosen up the mesh bone a bit, so the jiggle can propagate a little).</li>
+</ul>
+<p>That's it! The final file with can be found <a href="../../demos/deformable-body-animation-running-demo-final.blend">here</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 HiPhyEngine LLC
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.instant", "navigation.instant.progress", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

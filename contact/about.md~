@@ -1,0 +1,4 @@
+#About
+
+       I am Haixiang Liu, the developer for **HiPhyEngine**! I acquired my bachelor degree on Mathematics and Computer Sceinces from HKUST, and finished my doctoral dissertation of on simulation and high performance computing at UW Madison. I worked for WDAS for 6 years, working on character simulation and grooming toolset. Since I have left WDAS, I developed **HiPhyEngine**, an unified simulation engine for character simulation. **HiPhyEngine** aims to be the best available solution for solving the challenges in character simulation that I saw artists faces during my past experience. **HiPhyEngine** has many features that is not available in any other simulation engine. It is designed for modern hardware, robust, and guarantees intersection free, while giving artists as much control as possible.
+       I hope **HiPhyEngine** will give you the tools you need to unleash your creativity!

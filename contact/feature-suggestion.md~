@@ -1,0 +1,3 @@
+# Feature Request
+
+  We are always looking into improving **HiPhyEngine**! We understand that different artists have different workflows. So we are trying to provide as broad a toolset as possible. Most tools in **HiPhyEngine** are low level, with direct integration into the attribute and manual constraint creation without procedualism. However, as more users use **HiPhyEngine**, we want to provide more higher level tools to streamlines some of the simulation rig building and shotwork process.

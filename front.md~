@@ -1,0 +1,104 @@
+# Welcome to HiPhyEngine!
+
+![type:video](videos/glove-close-up-demo.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+
+The most powerful physics simulation addon for Blender to give you the tools to create studio quality physics simulation results! Developed by [a former simulation software developer from Walt Disney Animation Studio](contact/about.md), **HiPhyEngine** is fast, intersection-free, all-in-one multi-physics simulation engine designed for full artistic control without compromising performance. It has many exclusive features that are not available in any other commercial physics simulators.
+
+![type:video](videos/cloth-twist-demo-render.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+`Key Features`
+: **HiPhyEngine** is a fully-coupled high fidelity physics engine. It is capable of simulating *rigid body, hair, cloth, soft body* in a unified solver while guarantees intersection free! No other commercial physics simulation engines, in Blender or other packages, have the capability for fully-coupled physics simulation, or guarantees intersection free physics simulation.
+: **HiPhyEngine** also comes with a MPM solver that brings *snow* and *sand* simulation to blender, which are only previous available in other subscription based softwares!
+
+![type:video](videos/dress-dance-spin-demo.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+: You can try **HiPhyEngine** for 6 months! You will have the chance to fully experience the engine before making a purchase!
+: Once purchased, you can keep use the current version forever and gain access to one year of feature updates. Many of the most expensive commercial subscription-based production software does not have many of the features that HiPhyEngine provides!
+
+`Comparison To Blender's Internal Physics Simulation`
+
+: **Blender** uses position-based dynamics with a mass-spring system with discrete collision detection, it is fast, however is less accurate. **HiPhyEngine** uses finite element discretization with continuous collision detection. **HiPhyEngine**'s simulation result is more physically accurate, and guarantees intersection free, even with complex and multi-layered collisions, and no matter how fast an object is moving, or how thin it is.
+
+: **HiPhyEngine**'s finite element discretization has the benefit of resolution independence. Using lower resolution simulation for iterative parameter tuning in **HiPhyEngine** will guarantee the same large scale behaviors when increase the simulation resolution.
+
+![type:video](videos/hair.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+Here is an inexhaustive list of features of **HiPhyEngine** that is not available for Blender's internal physics simulator:
+
+<div class="center-table" markdown>
+| Features               | HiPhyEngine                                          |    Blender Internal Solver |
+| ---------------------- | ---------------------------------------------------- | -------------------------- | 
+|   **Intersection Free Collision**         |       :white_check_mark:       |       :x:     |
+|   **Animated Collider De-intersection**   |       :white_check_mark:       |       :x:     |
+|   **Full Material Coupling**              |       :white_check_mark:       |       :x:     |
+|   **High Fidelity FEM Discretization**    |       :white_check_mark:       |       :x:     |
+|   **Anisotropic Cloth Model**             |       :white_check_mark:       |       :x:     |
+|   **Material Model For Curly Hair**       |       :white_check_mark:       |       :x:     |
+|   **Gravity Preloading For Hair**         |       :white_check_mark:       |       :x:     |
+|   **Better Volume Preservation Soft Body**|       :white_check_mark:       |       :x:     |
+|   **MPM Snow/Sand simulation**            |       :white_check_mark:       |       :x:     |
+</div>
+
+`Designed for Performance`
+
+: **HiPhyEngine** is parallelized and vectorized to fully utilize all CPU cores. Even with the complex collisions, each frame will only take seconds.
+
+(1)
+{ .annotate }
+
+1. See the sample videos. The timing is measured on an AMD AI Max 395 cpu.
+
+`Full Artistic Control`
+
+: **HiPhyEngine** gives user full artistic controls. Most simulation parameters can be animated and mapped. In Blender, user can utilize attributes and geometric nodes to create animated simulation parameter maps for **HiPhyEngine**. **HiPhyEngine** also provides integration with the expression language **SeExpr2** to give user more ways to create force fields and attributes.
+
+![type:video](videos/dress-dance.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+`Your All in One Solver`
+
+: **HiPhyEngine** is a fully coupled physics simulation engine for five different material models. Need to couple cloth and rigid body? Cloth and hairs? Soft bodies? No need for the extra set up! **HiPhyEngine** will take care of all the interactions!
+
+![type:video](videos/weave-demo.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+`Robust and Clean Simulation Result`
+
+: **HiPhyEngine** guarantees intersection free simulation result. No matter how fast things are moving, how thin, if there is a intersection-free solution, **HiPhyEngine** will find it! To give user maximum control, user can use animated maps to activate/deactive collision on demand anywhere, at any frame.
+
+![type:video](videos/deformable-body-demo.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+`Special Features`
+
+: Gravity is pulling your carefully groomed hairs down? No worries! **HiPhyEngine** has an inverse simulation technique that automatically generates the rest shape that compensates for gravity and other external forces. Animators are handing you meshes that go through themselves? **HiPhyEngine**'s soft collider feature will automatically clean up incoming animation mesh makes them intersection free and ready for physics simulation. **HiPhyEngine** also has solver space, unit conversion, time scale, and tons of other features to explore!
+
+`Snow, Sand, and Beyond`
+
+: **HiPhyEngine** also provides a MPM solver, that is capable to simulate variety of phenomenons with fluid/solid mixture, such snow, sand, mud, or even bread dough!
+
+![type:video](videos/mpm-snow-demo.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+`Try It Out for Free!`
+
+: You can try out the trial version of **HiPhyEngine** [here](get-hiphy/download.md)!
+
+![type:video](videos/gears.mp4){: style="width: 80%; aspect-ratio: 16/9; display:block; margin-left:auto; margin-right:auto;"}
+
+`Getting Started`
+
+: A quick tutorial [here](quick-start/quick-start-blender.md) can get you up to speed with how to set up a simple **HiPhyEngine** physics simulation!
+
+`Case Study`
+
+: Like the demo videos? Download the [trial version](get-hiphy/download.md), follow the the [tutorials](case-studies/case-studies.md) to see how easy it is to get clean and intersection free simulations in **HiPhyEngine**!
+
+`Video Tutorials`
+
+: Follow our YouTube Channel: [@HiPhyEngine](https://www.youtube.com/@HiPhyEngine)! We are constantly adding new tutorials and demos!
+
+`How HiPhyEngine Is Developed`
+
+: We architected **HiPhyEngine** from ground up, all material models, collision alorithms are developped without AI generated code to ensure the HiPhyEngine is maintainable and easily extendable. We derived and verified all the mathematical formulations by hand, and unit tested everything to ensure correctness. This is why we can gurantee intersection free simulation, and robust simulation results.
+
+`About us`
+
+: We are a very small team with a lot of engineering experiences and experience working with talented artists, but we have limited artistic experience ourselves. We love to hear feedbacks from artists and know what features we should add next, and how to improve our tools! Join the [discord community](https://discord.gg/d2ZUsn9y4) to get updates, asking questions, and share your work! 

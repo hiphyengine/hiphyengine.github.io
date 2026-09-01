@@ -1,0 +1,7 @@
+# Tailor Dress
+
+![type:video](../videos/dress-tailor-demo.mp4){: style="width: 80%; height: 24.5vw;display:block; margin-left:auto; margin-right:auto;"}
+
+In this example, you will learn how to **HiPhyEngine** to tailor a simple dress. We assume you have already learned how to convert edges to constraints from the previous [shirt tailoring tutorial](tailor.md).
+
+The key focus of the tutorial is the using the [**rest scale**](../material-models/cloth.md#uv-panel), to create elastic band for the dress waist and shoulder.

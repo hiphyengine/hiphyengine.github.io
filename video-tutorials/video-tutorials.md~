@@ -1,0 +1,17 @@
+# Video Tutorials Series
+
+## Introduction Series
+
+In [this series](https://www.youtube.com/playlist?list=PLxX6dDf3Kge5A2IDxC-PTLhi4l6_5uw9E), we start with basic concepts of HiPhyEngine, going through all the main features of the HiPhyEngine. It will also teach you how to setup different material models.
+
+It will be the series to get you started no matter which material model interests you!
+
+## Cloth Series
+
+[This series](https://www.youtube.com/playlist?list=PLxX6dDf3Kge7cevohdWo6EPWEkq67Fhy8) is a deep dive into cloth workflow with HiPhyEngine. We will start with tailoring, to parameter tuning, and finally shotwork.
+
+This series highlights the HiPhyEngine's capability of cleaning up animation mesh and generating intersection free simulation results.
+
+## Deformable Series
+
+[This series](https://www.youtube.com/playlist?list=PLxX6dDf3Kge4RVE2TfTuouPDJ_vMJrwuP) will go through how to set up a deformable body simulation for a human character to achieve secondary motion for a running animation while cleaning up the self intersections.
